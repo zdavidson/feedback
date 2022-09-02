@@ -1,9 +1,9 @@
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import FeedbackList from "./feedback/FeedbackList";
 import Header from "./header/Header";
 import SideBar from "./sidebar/SideBar";
 
-const Dashboard = () => {
+const Suggestions = () => {
   return (
     <Container
       sx={{
@@ -12,10 +12,12 @@ const Dashboard = () => {
       }}
     >
       <SideBar />
-      <Header />
-      <FeedbackList />
+      <Box>
+        <Header />
+        <FeedbackList />
+      </Box>
     </Container>
   );
 };
 
-export default Dashboard;
+export default Suggestions;

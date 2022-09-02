@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Dashboard from "../components/views/dashboard/Dashboard";
+import Suggestions from "../components/views/suggestions/Suggestions";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -11,7 +11,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Feedback app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Dashboard />
+      <Suggestions />
     </div>
   );
 };
