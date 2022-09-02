@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import FeedbackCard from "./FeedbackCard";
-import type { Data } from "../../../../pages/api/data";
 
 const FeedbackList = () => {
   const [data, setData] = useState<any>([]);
