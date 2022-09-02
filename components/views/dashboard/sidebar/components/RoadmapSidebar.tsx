@@ -1,4 +1,4 @@
-import StyledBox from "../../../shared/StyledBox";
+import StyledBox from "../../../../shared/StyledBox";
 
 const Roadmap = () => {
   return <StyledBox sx={{ backgroundColor: "lightblue" }}>Roadmap</StyledBox>;

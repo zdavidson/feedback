@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Dashboard from "../components/dashboard/Dashboard";
+import Dashboard from "../components/views/dashboard/Dashboard";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {

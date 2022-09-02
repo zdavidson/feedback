@@ -1,5 +1,6 @@
 import { Container } from "@mui/material";
-import Main from "./mainContent/MainContent";
+import FeedbackList from "./feedback/FeedbackList";
+import Header from "./header/Header";
 import SideBar from "./sidebar/SideBar";
 
 const Dashboard = () => {
@@ -11,7 +12,8 @@ const Dashboard = () => {
       }}
     >
       <SideBar />
-      <Main />
+      <Header />
+      <FeedbackList />
     </Container>
   );
 };
