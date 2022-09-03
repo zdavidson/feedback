@@ -66,8 +66,8 @@ const AddNewSuggestion = () => {
               my: 2,
             }}
           >
-            {tags.map((tag) => (
-              <MenuItem>{tag}</MenuItem>
+            {tags.map((tag, key) => (
+              <MenuItem key={key}>{tag}</MenuItem>
             ))}
           </Select>
           <Typography variant="h4">Feedback Detail</Typography>
