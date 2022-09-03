@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import Button from "../../../shared/StyledButton";
+import { useRouter } from "next/router";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -26,6 +27,7 @@ interface HeaderProps {
 }
 
 const Header = ({ suggestions }: HeaderProps) => {
+  const router = useRouter();
   return (
     <StyledBox
       sx={{
@@ -57,7 +59,9 @@ const Header = ({ suggestions }: HeaderProps) => {
           <MenuItem>Least Comments</MenuItem>
         </Select>
       </Box>
-      <Button>+ Add Feedback</Button>
+      <Button onClick={() => router.push("/suggestions/add")}>
+        + Add Feedback
+      </Button>
     </StyledBox>
   );
 };

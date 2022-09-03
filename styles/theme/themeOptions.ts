@@ -17,8 +17,16 @@ const themeOptions: ThemeOptions = {
       fontSize: 18,
       fontWeight: 700,
     },
+    h4: {
+      fontSize: 14,
+      fontWeight: 700,
+      lineHeight: 2.25,
+    },
     body1: {
-      fontSize: 15,
+      fontSize: 16,
+    },
+    body2: {
+      fontSize: 14,
     },
   },
 };
@@ -42,6 +50,7 @@ export const COLORS = {
     lightBlue: "#62BCFA",
     tangerine: "#F49F85",
   },
+  background: "#f2f4ff",
 };
 
 export default themeOptions;

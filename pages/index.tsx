@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useState, useMemo } from "react";
-import Suggestions from "../components/views/suggestions/Suggestions";
+import FeedbackBoard from "../components/views/feedback/FeedbackBoard";
 import styles from "../styles/Home.module.css";
 
 const Home: NextPage = () => {
@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         <meta name="description" content="Feedback app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Suggestions data={data} />
+      <FeedbackBoard data={data} />
     </div>
   );
 };
