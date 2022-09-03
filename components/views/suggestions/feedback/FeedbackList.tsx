@@ -1,12 +1,22 @@
 import { Box } from "@mui/material";
-import { useMemo, useState } from "react";
 import FeedbackCard from "./FeedbackCard";
+import type { Feedback } from "../../../../pages/api/data";
 
-const FeedbackList = ({ list }: any) => {
+interface FeedbackListProps {
+  list: [];
+}
+
+const FeedbackList = ({ list }: FeedbackListProps) => {
   return (
     <Box>
-      {list?.map((feedback: any) => {
-        return <FeedbackCard data={feedback} key={feedback.id} />;
+      {list?.map((feedback: Feedback) => {
+        return (
+          <FeedbackCard
+            description={feedback.description}
+            key={feedback.id}
+            title={feedback.title}
+          />
+        );
       })}
     </Box>
   );

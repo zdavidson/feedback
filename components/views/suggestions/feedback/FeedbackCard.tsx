@@ -2,7 +2,12 @@ import { Typography } from "@mui/material";
 import { COLORS } from "../../../../styles/theme/themeOptions";
 import StyledBox from "../../../shared/StyledBox";
 
-const FeedbackCard = ({ data }: any) => {
+interface FeedbackCardProps {
+  description: string;
+  title: string;
+}
+
+const FeedbackCard = ({ description, title }: FeedbackCardProps) => {
   return (
     <StyledBox
       sx={{
@@ -10,8 +15,8 @@ const FeedbackCard = ({ data }: any) => {
         color: COLORS.secondary.navy,
       }}
     >
-      <Typography variant="h3">{data.title}</Typography>
-      {data.description}
+      <Typography variant="h3">{title}</Typography>
+      <Typography variant="body1">{description}</Typography>
     </StyledBox>
   );
 };

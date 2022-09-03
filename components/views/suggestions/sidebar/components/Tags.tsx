@@ -2,9 +2,9 @@ import { Box } from "@mui/material";
 import { COLORS } from "../../../../../styles/theme/themeOptions";
 import StyledBox from "../../../../shared/StyledBox";
 
-type TagProps = {
+interface TagProps {
   tags: string[];
-};
+}
 
 const Tags = ({ tags }: TagProps) => {
   return (

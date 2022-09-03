@@ -3,7 +3,6 @@ import StyledBox from "../../../shared/StyledBox";
 import EmojiObjectsOutlinedIcon from "@mui/icons-material/EmojiObjectsOutlined";
 import {
   Box,
-  InputLabel,
   MenuItem,
   OutlinedInput,
   Select,
@@ -22,9 +21,9 @@ const MenuProps = {
   },
 };
 
-type HeaderProps = {
+interface HeaderProps {
   suggestions: number;
-};
+}
 
 const Header = ({ suggestions }: HeaderProps) => {
   return (
@@ -51,7 +50,12 @@ const Header = ({ suggestions }: HeaderProps) => {
           input={<OutlinedInput />}
           MenuProps={MenuProps}
           sx={{ ml: 4, width: 200 }}
-        ></Select>
+        >
+          <MenuItem>Most Upvotes</MenuItem>
+          <MenuItem>Least Upvotes</MenuItem>
+          <MenuItem>Most Comments</MenuItem>
+          <MenuItem>Least Comments</MenuItem>
+        </Select>
       </Box>
       <Button>+ Add Feedback</Button>
     </StyledBox>

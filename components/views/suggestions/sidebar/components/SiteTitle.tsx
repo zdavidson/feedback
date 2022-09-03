@@ -2,9 +2,9 @@ import { Box, Typography } from "@mui/material";
 import { COLORS } from "../../../../../styles/theme/themeOptions";
 import StyledBox from "../../../../shared/StyledBox";
 
-type TitleProps = {
+interface TitleProps {
   title: string;
-};
+}
 
 const SiteTitle = ({ title }: TitleProps) => {
   return (

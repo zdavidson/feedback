@@ -1,18 +1,18 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
 
-export type Feedback = {
+export interface Feedback {
   id: number;
   title: string;
   description: string;
   tags: string[];
-};
+}
 
-export type Data = {
+export interface Data {
   siteName: string;
   tags: string[];
   feedbackList: Feedback[];
-};
+}
 
 export default function handler(
   req: NextApiRequest,

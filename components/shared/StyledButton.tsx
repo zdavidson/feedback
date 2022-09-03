@@ -1,11 +1,11 @@
 import { COLORS } from "../../styles/theme/themeOptions";
 import Button from "@mui/material/Button";
 
-type ButtonProps = {
+interface ButtonProps {
   backgroundColor?: string;
   children: string;
   sx?: object;
-};
+}
 
 const StyledButton = ({
   backgroundColor = COLORS.primary.magenta,
