@@ -16,7 +16,7 @@ const FeedbackCard = ({ description, title }: FeedbackCardProps) => {
       }}
     >
       <Typography variant="h3">{title}</Typography>
-      <Typography variant="body1">{description}</Typography>
+      <Typography variant="body2">{description}</Typography>
     </StyledBox>
   );
 };

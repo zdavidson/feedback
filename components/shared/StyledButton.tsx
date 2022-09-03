@@ -4,12 +4,14 @@ import Button from "@mui/material/Button";
 interface ButtonProps {
   backgroundColor?: string;
   children: string;
+  onClick: () => void;
   sx?: object;
 }
 
 const StyledButton = ({
   backgroundColor = COLORS.primary.magenta,
   children,
+  onClick,
   sx,
 }: ButtonProps) => {
   return (
@@ -21,6 +23,7 @@ const StyledButton = ({
         px: 3,
         py: 1,
       }}
+      onClick={onClick}
       variant="contained"
     >
       {children}
