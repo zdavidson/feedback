@@ -12,10 +12,12 @@ import StyledBox from "../../components/shared/StyledBox";
 import StyledButton from "../../components/shared/StyledButton";
 import StyledTextField from "../../components/shared/StyledTextField";
 import { COLORS } from "../../styles/theme/themeOptions";
+import AddIcon from "@mui/icons-material/Add";
+import DecorativeCircle from "../../components/shared/DecorativeCircle";
 
 const tags = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
-const AddNewFeedback = () => {
+const AddNewSuggestion = () => {
   const router = useRouter();
 
   return (
@@ -28,13 +30,22 @@ const AddNewFeedback = () => {
       spacing={2}
     >
       <Grid item md={5}>
-        <Box>
-          <Link href="/">{`< Go Back`}</Link>
+        <Box sx={{ mb: 8 }}>
+          <Typography
+            sx={{ color: COLORS.primary.navy, fontWeight: 700 }}
+            variant="body2"
+          >
+            <Link href="/">{`< Go Back`}</Link>
+          </Typography>
         </Box>
+
         <StyledBox
           component="form"
           sx={{ backgroundColor: COLORS.primary.white, px: 6, py: 5 }}
         >
+          <DecorativeCircle>
+            <AddIcon fontSize="large" htmlColor={COLORS.primary.white} />
+          </DecorativeCircle>
           <Typography variant="h1" sx={{ my: 4 }}>
             Create New Feedback
           </Typography>
@@ -85,4 +96,4 @@ const AddNewFeedback = () => {
   );
 };
 
-export default AddNewFeedback;
+export default AddNewSuggestion;

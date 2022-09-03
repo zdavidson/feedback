@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
-import FeedbackCard from "./FeedbackCard";
-import type { Feedback } from "../../../../pages/api/data";
+import SuggestionCard from "./suggestions/SuggestionCard";
+import type { Feedback } from "../../../pages/api/data";
 
 interface FeedbackListProps {
   list: [];
@@ -11,7 +11,7 @@ const FeedbackList = ({ list }: FeedbackListProps) => {
     <Box>
       {list?.map((feedback: Feedback) => {
         return (
-          <FeedbackCard
+          <SuggestionCard
             description={feedback.description}
             key={feedback.id}
             title={feedback.title}
