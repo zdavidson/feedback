@@ -17,6 +17,9 @@ const themeOptions: ThemeOptions = {
       fontSize: 18,
       fontWeight: 700,
     },
+    body1: {
+      fontSize: 15,
+    },
   },
 };
 

@@ -1,22 +1,28 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import FeedbackList from "./feedback/FeedbackList";
 import Header from "./header/Header";
 import SideBar from "./sidebar/SideBar";
 
-const Suggestions = () => {
+const Suggestions = ({ data }: any) => {
   return (
-    <Container
+    <Grid
       sx={{
-        display: "flex",
         mt: 2,
       }}
+      justifyContent="center"
+      container
+      spacing={2}
     >
-      <SideBar />
-      <Box>
-        <Header />
-        <FeedbackList />
-      </Box>
-    </Container>
+      <Grid item md={2.5}>
+        <SideBar data={data} />
+      </Grid>
+      <Grid item md={8}>
+        <Box>
+          <Header suggestions={data?.feedbackList?.length} />
+          <FeedbackList list={data.feedbackList} />
+        </Box>
+      </Grid>
+    </Grid>
   );
 };
 
