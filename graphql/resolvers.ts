@@ -22,5 +22,9 @@ export const resolvers = {
         tags: ["Feature"],
       },
     ],
+
+    tags: () => [
+      { names: ["All", "UI", "UX", "Enhancement", "Bug", "Feature"] },
+    ],
   },
 };
