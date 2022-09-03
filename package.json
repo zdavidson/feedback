@@ -7,19 +7,6 @@
     "lint": "next lint",
     "test": "jest --watch"
   },
-  "jest": {
-    "roots": [
-      "<rootDir>",
-      "/pages"
-    ],
-    "modulePaths": [
-      "<rootDir>",
-      "/pages"
-    ],
-    "moduleDirectories": [
-      "node_modules"
-    ]
-  },
   "dependencies": {
     "@emotion/cache": "^11.7.1",
     "@emotion/react": "^11.9.0",
