@@ -8,12 +8,8 @@ export const typeDefs = gql`
     tags: [String]
   }
 
-  type Tags {
-    names: [String]
-  }
-
   type Query {
-    suggestionList: [Suggestion]
-    tags: [Tags]
+    suggestions: [Suggestion]
+    tags: [String]
   }
 `;

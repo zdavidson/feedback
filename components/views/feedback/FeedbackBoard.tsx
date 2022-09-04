@@ -3,7 +3,7 @@ import FeedbackList from "./FeedbackList";
 import Header from "./header/Header";
 import SideBar from "./sidebar/SideBar";
 
-const FeedbackBoard = ({ data }: any) => {
+const FeedbackBoard = () => {
   return (
     <Grid
       sx={{
@@ -14,12 +14,12 @@ const FeedbackBoard = ({ data }: any) => {
       spacing={2}
     >
       <Grid item md={2.5}>
-        <SideBar data={data} />
+        <SideBar />
       </Grid>
       <Grid item md={8}>
         <Box>
-          <Header suggestions={data?.feedbackList?.length} />
-          <FeedbackList list={data.feedbackList} />
+          <Header />
+          <FeedbackList />
         </Box>
       </Grid>
     </Grid>

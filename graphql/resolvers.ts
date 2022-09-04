@@ -1,6 +1,6 @@
 export const resolvers = {
   Query: {
-    suggestionList: () => [
+    suggestions: () => [
       {
         id: 1,
         title: "Add tags for solutions",
@@ -23,8 +23,6 @@ export const resolvers = {
       },
     ],
 
-    tags: () => [
-      { names: ["All", "UI", "UX", "Enhancement", "Bug", "Feature"] },
-    ],
+    tags: () => ["All", "UI", "UX", "Enhancement", "Bug", "Feature"],
   },
 };
