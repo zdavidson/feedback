@@ -6,6 +6,8 @@ export const typeDefs = gql`
     title: String
     description: String
     tags: [String]
+    upvotes: Int
+    comments: Int
   }
 
   type Query {
