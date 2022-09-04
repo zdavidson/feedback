@@ -2,12 +2,12 @@ import { Typography } from "@mui/material";
 import { COLORS } from "../../../../styles/theme/themeOptions";
 import StyledBox from "../../../shared/StyledBox";
 
-interface SuggestionCardProps {
+interface Props {
   description: string;
   title: string;
 }
 
-const SuggestionCard = ({ description, title }: SuggestionCardProps) => {
+const SuggestionCard = ({ description, title }: Props) => {
   return (
     <StyledBox
       sx={{

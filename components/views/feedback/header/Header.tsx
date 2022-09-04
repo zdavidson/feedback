@@ -22,12 +22,24 @@ const MenuProps = {
   },
 };
 
-interface HeaderProps {
-  suggestions: number;
-}
+import { gql, useQuery } from "@apollo/client";
 
-const Header = ({ suggestions }: HeaderProps) => {
+const HeaderQuery = gql`
+  query {
+    suggestions {
+      id
+    }
+  }
+`;
+
+const Header = () => {
   const router = useRouter();
+
+  const { data, error, loading } = useQuery(HeaderQuery);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
+
   return (
     <StyledBox
       sx={{
@@ -45,7 +57,7 @@ const Header = ({ suggestions }: HeaderProps) => {
       >
         <EmojiObjectsOutlinedIcon />
         <Typography sx={{ ml: 1 }} variant="h3">
-          {suggestions} Suggestions
+          {data?.suggestions.length || 0} Suggestions
         </Typography>
 
         <Select

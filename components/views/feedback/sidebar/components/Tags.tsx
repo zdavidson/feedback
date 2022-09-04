@@ -2,11 +2,20 @@ import { Box } from "@mui/material";
 import { COLORS } from "../../../../../styles/theme/themeOptions";
 import StyledBox from "../../../../shared/StyledBox";
 
-interface TagProps {
-  tags: string[];
-}
+import { gql, useQuery } from "@apollo/client";
 
-const Tags = ({ tags }: TagProps) => {
+const TagsQuery = gql`
+  query {
+    tags
+  }
+`;
+
+const Tags = () => {
+  const { data, error, loading } = useQuery(TagsQuery);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
+
   return (
     <StyledBox
       sx={{
@@ -15,7 +24,7 @@ const Tags = ({ tags }: TagProps) => {
         flexWrap: "wrap",
       }}
     >
-      {tags?.map((tag, key) => (
+      {data.tags?.map((name: string, key: number) => (
         <Box
           key={key}
           sx={{
@@ -26,7 +35,7 @@ const Tags = ({ tags }: TagProps) => {
             py: 1,
           }}
         >
-          {tag}
+          {name}
         </Box>
       ))}
     </StyledBox>

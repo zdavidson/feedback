@@ -1,27 +1,6 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next";
-
-export interface Feedback {
-  id: number;
-  title: string;
-  description: string;
-  tags: string[];
-}
-
-export interface Data {
-  siteName: string;
-  tags: string[];
-  feedbackList: Feedback[];
-}
-
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({
-    siteName: "Feedback Board",
-    tags: ["All", "UI", "UX", "Enhancement", "Bug", "Feature"],
-    feedbackList: [
+export const resolvers = {
+  Query: {
+    suggestions: () => [
       {
         id: 1,
         title: "Add tags for solutions",
@@ -43,5 +22,7 @@ export default function handler(
         tags: ["Feature"],
       },
     ],
-  });
-}
+
+    tags: () => ["All", "UI", "UX", "Enhancement", "Bug", "Feature"],
+  },
+};
