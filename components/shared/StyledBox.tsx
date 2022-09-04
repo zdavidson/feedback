@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { ElementType } from "react";
 
 interface StyledBoxProps {
-  children: JSX.Element | JSX.Element[];
+  children: JSX.Element | JSX.Element[] | String;
   component?: ElementType<any>;
   sx: {};
 }

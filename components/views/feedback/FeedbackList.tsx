@@ -3,7 +3,7 @@ import SuggestionCard from "./suggestions/SuggestionCard";
 import { gql, useQuery } from "@apollo/client";
 import { Key } from "react";
 
-const SuggestionsQuery = gql`
+const FeedbackListQuery = gql`
   query {
     suggestions {
       id
@@ -15,7 +15,7 @@ const SuggestionsQuery = gql`
 `;
 
 const FeedbackList = () => {
-  const { data, error, loading } = useQuery(SuggestionsQuery);
+  const { data, error, loading } = useQuery(FeedbackListQuery);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
