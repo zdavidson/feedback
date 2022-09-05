@@ -10,6 +10,12 @@ export const typeDefs = gql`
     comments: Int
   }
 
+  type Comment {
+    user: User
+    comment: String
+    replies: [Reply]
+  }
+
   type Query {
     suggestions: [Suggestion]
     tags: [String]
