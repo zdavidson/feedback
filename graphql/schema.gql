@@ -3,14 +3,6 @@ type Suggestion {
   title: String
   description: String
   tags: [String]
-  upvotes: Int
-  comments: Int
-}
-
-type Comment {
-  user: User
-  comment: String
-  replies: [Reply]
 }
 
 type Tags {
@@ -18,6 +10,6 @@ type Tags {
 }
 
 type Query {
-  suggestionList: [Suggestion]
+  suggestions: [Suggestion]
   tags: [Tags]
 }
