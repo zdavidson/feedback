@@ -3,6 +3,10 @@ import Head from "next/head";
 import FeedbackBoard from "../components/views/feedback/FeedbackBoard";
 import styles from "../styles/Home.module.css";
 
+// import { Amplify, API, graphqlOperation } from "aws-amplify";
+// import awsconfig from "../src/aws-exports";
+// Amplify.configure(awsconfig);
+
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>

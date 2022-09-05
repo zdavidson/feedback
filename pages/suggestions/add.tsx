@@ -14,11 +14,27 @@ import StyledTextField from "../../components/shared/StyledTextField";
 import { COLORS } from "../../styles/theme/themeOptions";
 import AddIcon from "@mui/icons-material/Add";
 import DecorativeCircle from "../../components/shared/DecorativeCircle";
+import { API, graphqlOperation } from "aws-amplify";
+import { getBlog } from "../../src/graphql/queries";
+import { useEffect } from "react";
+
+import { Amplify } from "aws-amplify";
+import awsconfig from "../../src/aws-exports";
+Amplify.configure(awsconfig);
 
 const tags = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
 const AddNewSuggestion = () => {
   const router = useRouter();
+
+  useEffect(() => {
+    const blogs = async () => {
+      await API.graphql(graphqlOperation(getBlog));
+    };
+
+    blogs();
+    console.log(blogs);
+  }, []);
 
   return (
     <Grid
