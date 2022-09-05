@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import SuggestionCard from "./suggestions/SuggestionCard";
 import { gql, useQuery } from "@apollo/client";
-import { Key } from "react";
 
 const FeedbackListQuery = gql`
   query {
@@ -10,9 +9,20 @@ const FeedbackListQuery = gql`
       title
       description
       tags
+      upvotes
+      comments
     }
   }
 `;
+
+interface Suggestion {
+  id: number;
+  title: string;
+  description: string;
+  tags: [string];
+  upvotes: number;
+  comments: number;
+}
 
 const FeedbackList = () => {
   const { data, error, loading } = useQuery(FeedbackListQuery);
@@ -22,21 +32,18 @@ const FeedbackList = () => {
 
   return (
     <Box>
-      {data.suggestions.map(
-        (suggestion: {
-          description: string;
-          id: Key | null | undefined;
-          title: string;
-        }) => {
-          return (
-            <SuggestionCard
-              description={suggestion.description}
-              key={suggestion.id}
-              title={suggestion.title}
-            />
-          );
-        }
-      )}
+      {data?.suggestions.map((suggestion: Suggestion) => {
+        return (
+          <SuggestionCard
+            comments={suggestion.comments}
+            description={suggestion.description}
+            key={suggestion.id}
+            tags={suggestion.tags}
+            title={suggestion.title}
+            upvotes={suggestion.upvotes}
+          />
+        );
+      })}
     </Box>
   );
 };

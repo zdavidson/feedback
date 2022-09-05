@@ -1,10 +1,10 @@
 import { Box } from "@mui/material";
-import { ElementType } from "react";
+import { ElementType, ReactNode } from "react";
 
 interface StyledBoxProps {
-  children: JSX.Element | JSX.Element[] | String;
+  children: ReactNode;
   component?: ElementType<any>;
-  sx: {};
+  sx?: {};
 }
 
 const StyledBox = ({ children, component, sx }: StyledBoxProps) => {

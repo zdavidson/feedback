@@ -1,9 +1,10 @@
 import { COLORS } from "../../styles/theme/themeOptions";
 import Button from "@mui/material/Button";
+import { ReactNode } from "react";
 
 interface ButtonProps {
   backgroundColor?: string;
-  children: string;
+  children: ReactNode;
   onClick: () => void;
   sx?: object;
 }
@@ -17,11 +18,11 @@ const StyledButton = ({
   return (
     <Button
       sx={{
-        ...sx,
         backgroundColor: backgroundColor,
         color: COLORS.primary.white,
         px: 3,
         py: 1,
+        ...sx,
       }}
       onClick={onClick}
       variant="contained"

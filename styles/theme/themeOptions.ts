@@ -16,6 +16,7 @@ const themeOptions: ThemeOptions = {
     h3: {
       fontSize: 18,
       fontWeight: 700,
+      marginBottom: 8,
     },
     h4: {
       fontSize: 14,
