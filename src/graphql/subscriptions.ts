@@ -2,234 +2,141 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateBlog = /* GraphQL */ `
-  subscription OnCreateBlog($filter: ModelSubscriptionBlogFilterInput) {
-    onCreateBlog(filter: $filter) {
+export const onCreateSuggestion = /* GraphQL */ `
+  subscription OnCreateSuggestion(
+    $filter: ModelSubscriptionSuggestionFilterInput
+  ) {
+    onCreateSuggestion(filter: $filter) {
       id
-      name
-      posts {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          blogPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateBlog = /* GraphQL */ `
-  subscription OnUpdateBlog($filter: ModelSubscriptionBlogFilterInput) {
-    onUpdateBlog(filter: $filter) {
-      id
-      name
-      posts {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          blogPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteBlog = /* GraphQL */ `
-  subscription OnDeleteBlog($filter: ModelSubscriptionBlogFilterInput) {
-    onDeleteBlog(filter: $filter) {
-      id
-      name
-      posts {
-        items {
-          id
-          title
-          createdAt
-          updatedAt
-          blogPostsId
-        }
-        nextToken
-      }
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreatePost = /* GraphQL */ `
-  subscription OnCreatePost($filter: ModelSubscriptionPostFilterInput) {
-    onCreatePost(filter: $filter) {
-      id
-      title
-      blog {
+      description
+      statusID
+      status {
         id
         name
-        posts {
+        suggestions {
           nextToken
         }
         createdAt
         updatedAt
       }
-      comments {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          postCommentsId
-        }
-        nextToken
-      }
+      title
+      upvotes
       createdAt
       updatedAt
-      blogPostsId
     }
   }
 `;
-export const onUpdatePost = /* GraphQL */ `
-  subscription OnUpdatePost($filter: ModelSubscriptionPostFilterInput) {
-    onUpdatePost(filter: $filter) {
+export const onUpdateSuggestion = /* GraphQL */ `
+  subscription OnUpdateSuggestion(
+    $filter: ModelSubscriptionSuggestionFilterInput
+  ) {
+    onUpdateSuggestion(filter: $filter) {
       id
-      title
-      blog {
+      description
+      statusID
+      status {
         id
         name
-        posts {
+        suggestions {
           nextToken
         }
         createdAt
         updatedAt
       }
-      comments {
-        items {
-          id
-          content
-          createdAt
-          updatedAt
-          postCommentsId
-        }
-        nextToken
-      }
+      title
+      upvotes
       createdAt
       updatedAt
-      blogPostsId
     }
   }
 `;
-export const onDeletePost = /* GraphQL */ `
-  subscription OnDeletePost($filter: ModelSubscriptionPostFilterInput) {
-    onDeletePost(filter: $filter) {
+export const onDeleteSuggestion = /* GraphQL */ `
+  subscription OnDeleteSuggestion(
+    $filter: ModelSubscriptionSuggestionFilterInput
+  ) {
+    onDeleteSuggestion(filter: $filter) {
       id
-      title
-      blog {
+      description
+      statusID
+      status {
         id
         name
-        posts {
+        suggestions {
           nextToken
         }
         createdAt
         updatedAt
       }
-      comments {
+      title
+      upvotes
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateStatus = /* GraphQL */ `
+  subscription OnCreateStatus($filter: ModelSubscriptionStatusFilterInput) {
+    onCreateStatus(filter: $filter) {
+      id
+      name
+      suggestions {
         items {
           id
-          content
+          description
+          statusID
+          title
+          upvotes
           createdAt
           updatedAt
-          postCommentsId
         }
         nextToken
       }
       createdAt
       updatedAt
-      blogPostsId
     }
   }
 `;
-export const onCreateComment = /* GraphQL */ `
-  subscription OnCreateComment($filter: ModelSubscriptionCommentFilterInput) {
-    onCreateComment(filter: $filter) {
+export const onUpdateStatus = /* GraphQL */ `
+  subscription OnUpdateStatus($filter: ModelSubscriptionStatusFilterInput) {
+    onUpdateStatus(filter: $filter) {
       id
-      post {
-        id
-        title
-        blog {
+      name
+      suggestions {
+        items {
           id
-          name
+          description
+          statusID
+          title
+          upvotes
           createdAt
           updatedAt
         }
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        blogPostsId
+        nextToken
       }
-      content
       createdAt
       updatedAt
-      postCommentsId
     }
   }
 `;
-export const onUpdateComment = /* GraphQL */ `
-  subscription OnUpdateComment($filter: ModelSubscriptionCommentFilterInput) {
-    onUpdateComment(filter: $filter) {
+export const onDeleteStatus = /* GraphQL */ `
+  subscription OnDeleteStatus($filter: ModelSubscriptionStatusFilterInput) {
+    onDeleteStatus(filter: $filter) {
       id
-      post {
-        id
-        title
-        blog {
+      name
+      suggestions {
+        items {
           id
-          name
+          description
+          statusID
+          title
+          upvotes
           createdAt
           updatedAt
         }
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        blogPostsId
+        nextToken
       }
-      content
       createdAt
       updatedAt
-      postCommentsId
-    }
-  }
-`;
-export const onDeleteComment = /* GraphQL */ `
-  subscription OnDeleteComment($filter: ModelSubscriptionCommentFilterInput) {
-    onDeleteComment(filter: $filter) {
-      id
-      post {
-        id
-        title
-        blog {
-          id
-          name
-          createdAt
-          updatedAt
-        }
-        comments {
-          nextToken
-        }
-        createdAt
-        updatedAt
-        blogPostsId
-      }
-      content
-      createdAt
-      updatedAt
-      postCommentsId
     }
   }
 `;

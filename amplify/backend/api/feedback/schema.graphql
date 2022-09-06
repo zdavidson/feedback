@@ -3,46 +3,17 @@
 input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
-schema {
-  query: Query
-}
-
-type Query {
-  getSuggestions: [Suggestion]
-  getTags: [Tags]
-}
-
-type Comment {
-  user: User
-  comment: String
-  replies: [Reply]
-}
-
-type Suggestion {
+type Suggestion @model {
   id: ID!
-  comments: [Comment]
   description: String
-  status: Status
-  tags: [Tags]
+  statusID: ID! @index(name: "byStatus", sortKeyFields: ["upvotes"])
+  status: Status @hasOne(fields: "statusID")
   title: String
   upvotes: Int
 }
 
-type Reply {
-  user: User
-  comment: String
-}
-
-type Status {
-  description: String
-  status: String
-}
-
-type Tags {
-  names: [String]
-}
-
-type User {
+type Status @model {
+  id: ID!
   name: String
-  userName: String
+  suggestions: [Suggestion] @hasMany(indexName: "byStatus", fields: ["id"])
 }
