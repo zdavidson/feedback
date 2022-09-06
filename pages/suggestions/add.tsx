@@ -14,30 +14,49 @@ import StyledTextField from "../../components/shared/StyledTextField";
 import { COLORS } from "../../styles/theme/themeOptions";
 import AddIcon from "@mui/icons-material/Add";
 import DecorativeCircle from "../../components/shared/DecorativeCircle";
-import { API, graphqlOperation } from "aws-amplify";
+import { Amplify, API, graphqlOperation, withSSRContext } from "aws-amplify";
 import { useEffect, useState } from "react";
 import * as queries from "../../src/graphql/queries";
 import { ListSuggestionsQuery } from "src/API";
+import awsExports from "src/aws-exports";
+
+// Amplify.configure({ ...awsExports, ssr: true });
+
+// export async function getServerSideProps({ req }: any) {
+//   const SSR = withSSRContext({ req });
+//   const response = await SSR.API.graphql({ query: queries.listSuggestions });
+
+//   return {
+//     props: {
+//       suggestions: response.data.listSuggestions.items,
+//     },
+//   };
+// }
 
 const tags = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
-const AddNewSuggestion = () => {
-  const [data, setData] = useState({});
+const AddNewSuggestion = ({ suggestions = [] }) => {
+  // console.log("Suggestions: ", suggestions);
+  // const [data, setData] = useState({});
   const router = useRouter();
 
-  useEffect(() => {
-    const listSuggestions = async () => {
-      await (
-        API.graphql(
-          graphqlOperation(queries.listSuggestions)
-        ) as Promise<ListSuggestionsQuery>
-      )
-        .then((res) => setData(res))
-        .then(() => console.log(data));
-    };
+  // useEffect(() => {
+  //   const listSuggestions = async () => {
+  //     await (
+  //       API.graphql({
+  //         query: queries.listSuggestions,
+  //         authMode: "AWS_IAM",
+  //       }) as Promise<ListSuggestionsQuery>
+  //     )
+  //       .then((res) => setData(res))
+  //       .then(() => console.log(data))
+  //       .catch((err) => {
+  //         console.error("Error: ", err);
+  //       });
+  //   };
 
-    listSuggestions();
-  }, []);
+  //   listSuggestions();
+  // }, []);
 
   return (
     <Grid
