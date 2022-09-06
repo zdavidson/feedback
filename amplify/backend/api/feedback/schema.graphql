@@ -3,16 +3,29 @@
 input AMPLIFY {
   globalAuthRule: AuthRule = { allow: public }
 } # FOR TESTING ONLY!
-type Tag @model {
-  name: String
+type Comment @model {
+  id: ID!
+  comment: String
+  replies: [Reply] @hasMany(indexName: "byComment", fields: ["id"])
+  suggestionID: ID! @index(name: "bySuggestion", sortKeyFields: ["comment"])
+  user: User @hasOne(fields: "userID")
+  userID: ID! @index(name: "byUser", sortKeyFields: ["comment"])
+}
+
+type Reply @model {
+  id: ID!
+  content: String
+  comment: Comment @hasOne(fields: "commentID")
+  commentID: ID! @index(name: "byComment", sortKeyFields: ["content"])
 }
 
 type Suggestion @model {
   id: ID!
+  comments: [Comment] @hasMany(indexName: "bySuggestion", fields: ["id"])
   description: String
-  statusID: ID! @index(name: "byStatus", sortKeyFields: ["upvotes"])
+  statusID: ID @index(name: "byStatus", sortKeyFields: ["upvotes"])
   status: Status @hasOne(fields: "statusID")
-  tags: [Tag] @hasMany
+  tags: [Tag] @manyToMany(relationName: "SuggestionTags")
   title: String
   upvotes: Int
 }
@@ -21,4 +34,17 @@ type Status @model {
   id: ID!
   name: String
   suggestions: [Suggestion] @hasMany(indexName: "byStatus", fields: ["id"])
+}
+
+type Tag @model {
+  id: ID!
+  name: String
+  suggestions: [Suggestion] @manyToMany(relationName: "SuggestionTags")
+}
+
+type User @model {
+  id: ID!
+  comments: [Comment] @hasMany(indexName: "byUser", fields: ["id"])
+  name: String
+  userName: String
 }
