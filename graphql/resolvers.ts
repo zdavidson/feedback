@@ -57,5 +57,14 @@ export const resolvers = {
     ],
 
     tags: () => ["All", "UI", "UX", "Enhancement", "Bug", "Feature"],
+    comments: () => [
+      {
+        id: 1,
+        user: { name: "Elijah Moss", userName: "@hexagon.bestagon" },
+        comment:
+          "Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my device’s dark mode turns on without the bright background it currently has.",
+        replies: [],
+      },
+    ],
   },
 };
