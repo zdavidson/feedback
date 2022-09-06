@@ -10,6 +10,11 @@
       "StackName": "amplify-feedback-dev-91508",
       "StackId": "arn:aws:cloudformation:us-east-1:206448159323:stack/amplify-feedback-dev-91508/ef3b8750-2de5-11ed-bc89-125ee838c6d5",
       "AmplifyAppId": "d310zp34q3nfew"
+    },
+    "categories": {
+      "auth": {
+        "feedback040836ee": {}
+      }
     }
   }
 }

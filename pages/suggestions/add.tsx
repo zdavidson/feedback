@@ -15,25 +15,28 @@ import { COLORS } from "../../styles/theme/themeOptions";
 import AddIcon from "@mui/icons-material/Add";
 import DecorativeCircle from "../../components/shared/DecorativeCircle";
 import { API, graphqlOperation } from "aws-amplify";
-import { getBlog } from "../../src/graphql/queries";
-import { useEffect } from "react";
-
-import { Amplify } from "aws-amplify";
-import awsconfig from "../../src/aws-exports";
-Amplify.configure(awsconfig);
+import { useEffect, useState } from "react";
+import * as queries from "../../src/graphql/queries";
+import { ListSuggestionsQuery } from "src/API";
 
 const tags = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
 const AddNewSuggestion = () => {
+  const [data, setData] = useState({});
   const router = useRouter();
 
   useEffect(() => {
-    const blogs = async () => {
-      await API.graphql(graphqlOperation(getBlog));
+    const listSuggestions = async () => {
+      await (
+        API.graphql(
+          graphqlOperation(queries.listSuggestions)
+        ) as Promise<ListSuggestionsQuery>
+      )
+        .then((res) => setData(res))
+        .then(() => console.log(data));
     };
 
-    blogs();
-    console.log(blogs);
+    listSuggestions();
   }, []);
 
   return (
