@@ -1,5 +1,5 @@
 import { COLORS } from "../../styles/theme/themeOptions";
-import { styled, Typography } from "@mui/material";
+import { Box, styled } from "@mui/material";
 import NextLink from "next/link";
 import { ReactNode } from "react";
 
@@ -8,7 +8,7 @@ interface Props {
   href: string;
 }
 
-const StyledLink = styled(Typography)({
+const StyledLink = styled(Box)({
   "&:hover": {
     color: COLORS.primary.blue,
     cursor: "pointer",

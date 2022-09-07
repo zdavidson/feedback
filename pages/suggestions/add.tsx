@@ -8,9 +8,9 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Box from "../../components/shared/Box";
-import Button from "../../components/shared/Button";
-import TextField from "../../components/shared/TextField";
+import StyledBox from "../../components/shared/Box";
+import StyledButton from "../../components/shared/Button";
+import StyledTextField from "../../components/shared/TextField";
 import { COLORS } from "../../styles/theme/themeOptions";
 import AddIcon from "@mui/icons-material/Add";
 import DecorativeCircle from "../../components/shared/DecorativeCircle";
@@ -39,7 +39,7 @@ const AddNewSuggestion = () => {
           </Typography>
         </Box>
 
-        <Box
+        <StyledBox
           component="form"
           sx={{ backgroundColor: COLORS.primary.white, px: 6, py: 5 }}
         >
@@ -53,7 +53,7 @@ const AddNewSuggestion = () => {
           <Typography variant="body2">
             Add a short, descriptive headline
           </Typography>
-          <TextField id="feedback-title" />
+          <StyledTextField id="feedback-title" />
           <Typography variant="h4">Category</Typography>
           <Typography variant="body2">
             Choose a category for your feedback
@@ -75,19 +75,22 @@ const AddNewSuggestion = () => {
             Include any specific comments on what should be improved, added,
             etc.{" "}
           </Typography>
-          <TextField id="feedback-detail" height={100} />
+          <StyledTextField id="feedback-detail" height={100} />
           <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 2 }}>
-            <Button
+            <StyledButton
               backgroundColor={COLORS.primary.navy}
               onClick={() => router.push("/")}
             >
               Cancel
-            </Button>
-            <Button onClick={() => console.log("Add Feedback")} sx={{ ml: 2 }}>
+            </StyledButton>
+            <StyledButton
+              onClick={() => console.log("Add Feedback")}
+              sx={{ ml: 2 }}
+            >
               Add Feedback
-            </Button>
+            </StyledButton>
           </Box>
-        </Box>
+        </StyledBox>
       </Grid>
     </Grid>
   );

@@ -6,11 +6,11 @@ const FeedbackListQuery = gql`
   query {
     suggestions {
       id
-      title
+      comments
       description
       tags
+      title
       upvotes
-      comments
     }
   }
 `;
@@ -32,18 +32,8 @@ const FeedbackList = () => {
 
   return (
     <Box>
-      {data?.suggestions.map((suggestion: Suggestion) => {
-        return (
-          <SuggestionCard
-            id={suggestion.id}
-            comments={suggestion.comments}
-            description={suggestion.description}
-            key={suggestion.id}
-            tags={suggestion.tags}
-            title={suggestion.title}
-            upvotes={suggestion.upvotes}
-          />
-        );
+      {data?.suggestions.map((suggestion: Suggestion, key: number) => {
+        return <SuggestionCard key={key} suggestion={suggestion} />;
       })}
     </Box>
   );

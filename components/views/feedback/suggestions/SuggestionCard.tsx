@@ -1,33 +1,22 @@
-import { Box, Button, Typography } from "@mui/material";
-import { useState } from "react";
+import { Box, Typography } from "@mui/material";
 import { COLORS } from "../../../../styles/theme/themeOptions";
 import StyledBox from "../../../shared/Box";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import Link from "../../../shared/Link";
+import Upvotes from "./components/Upvotes";
 
 interface Props {
-  id: number;
-  description: string;
-  title: string;
-  tags: [string];
-  upvotes: number;
-  comments: number;
+  suggestion: {
+    id: number;
+    title: string;
+    description: string;
+    tags: [string];
+    upvotes: number;
+    comments: number;
+  };
 }
 
-const SuggestionCard = ({
-  id,
-  description,
-  title,
-  tags,
-  upvotes,
-  comments,
-}: Props) => {
-  const [upvoteCount, setUpvoteCount] = useState(upvotes);
-
-  const handleUpvote = () => {
-    setUpvoteCount(upvoteCount + 1);
-  };
-
+const SuggestionCard = ({ suggestion }: Props) => {
   return (
     /// change to grid
     <StyledBox
@@ -41,37 +30,13 @@ const SuggestionCard = ({
       }}
     >
       <Box sx={{ display: "flex" }}>
-        <Button
-          onClick={handleUpvote}
-          sx={{
-            alignItems: "center",
-            backgroundColor: COLORS.background,
-            color: "black",
-            flexDirection: "column",
-            height: "fit-content",
-            py: 1,
-            px: 0,
-          }}
-        >
-          <span
-            style={{
-              color: COLORS.primary.blue,
-              fontWeight: 700,
-              lineHeight: 1,
-            }}
-          >
-            ^
-          </span>
-          <Typography sx={{ fontWeight: 700 }} variant="body2">
-            {upvoteCount}
-          </Typography>
-        </Button>
+        <Upvotes upvotes={suggestion.upvotes} />
         <Box sx={{ mx: 4 }}>
           <Box>
-            <Link href={`/suggestions/${id}`}>
-              <Typography variant="h3">{title}</Typography>
+            <Link href={`/suggestions/${suggestion.id}`}>
+              <Typography variant="h3">{suggestion.title}</Typography>
             </Link>
-            <Typography variant="body2">{description}</Typography>
+            <Typography variant="body2">{suggestion.description}</Typography>
           </Box>
           <StyledBox
             sx={{
@@ -87,7 +52,7 @@ const SuggestionCard = ({
               sx={{ color: COLORS.primary.blue, fontWeight: 700 }}
               variant="body2"
             >
-              {tags}
+              {suggestion.tags}
             </Typography>
           </StyledBox>
         </Box>
@@ -95,7 +60,7 @@ const SuggestionCard = ({
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <ChatBubbleIcon sx={{ color: "#CDD2EE", mx: 2 }} />
         <Typography sx={{ fontWeight: 700 }} variant="body1">
-          {comments}
+          {suggestion.comments}
         </Typography>
       </Box>
     </StyledBox>
