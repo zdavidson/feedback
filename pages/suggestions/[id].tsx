@@ -59,7 +59,7 @@ const SuggestionDetails = () => {
           </Typography>
           <Button
             backgroundColor={COLORS.primary.blue}
-            onClick={() => console.log("clicked")}
+            onClick={() => router.push(`/suggestions/edit/${id}`)}
           >
             Edit Feedback
           </Button>
