@@ -41,8 +41,15 @@ const SuggestionDetails = () => {
       container
       spacing={2}
     >
-      <Grid item md={5}>
-        <Box sx={{ display: "flex", justifyContent: "space-between", mb: 4 }}>
+      <Grid item md={7}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            mb: 4,
+            mx: 2,
+          }}
+        >
           <Typography
             sx={{ color: COLORS.primary.navy, fontWeight: 700 }}
             variant="body2"
