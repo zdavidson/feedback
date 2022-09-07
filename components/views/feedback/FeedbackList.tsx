@@ -1,7 +1,9 @@
 import { Box } from "@mui/material";
 import SuggestionCard from "./suggestions/SuggestionCard";
 import { gql, useQuery } from "@apollo/client";
-import { Key } from "react";
+import { Key, useEffect, useState } from "react";
+import { listSuggestions } from "src/graphql/queries";
+import { API } from "aws-amplify";
 
 const FeedbackListQuery = gql`
   query {
@@ -13,6 +15,13 @@ const FeedbackListQuery = gql`
     }
   }
 `;
+
+async function getSuggestions() {
+  const response = await API.graphql({
+    query: listSuggestions,
+  });
+  return { props: { suggestions: response.data } };
+}
 
 const FeedbackList = () => {
   const { data, error, loading } = useQuery(FeedbackListQuery);
