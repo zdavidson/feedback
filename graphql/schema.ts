@@ -16,12 +16,15 @@ export const typeDefs = gql`
 
   type Comment {
     id: ID!
+    suggestionID: ID!
     user: User!
     comment: String!
     replies: [Reply]
   }
 
   type Reply {
+    id: ID!
+    commentID: ID!
     user: User
     comment: String
   }

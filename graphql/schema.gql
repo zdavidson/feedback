@@ -12,12 +12,16 @@ type Tags {
 }
 
 type Comment {
-  user: User
-  comment: String
+  id: ID!
+  suggestionID: ID!
+  user: User!
+  comment: String!
   replies: [Reply]
 }
 
 type Reply {
+  id: ID!
+  commentID: ID!
   user: User
   comment: String
 }
@@ -33,6 +37,7 @@ type Status {
 }
 
 type Query {
+  comments: [Comment]
   suggestions: [Suggestion]
   tags: [Tags]
 }
