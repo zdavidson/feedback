@@ -1,5 +1,5 @@
 import { COLORS } from "../../styles/theme/themeOptions";
-import Button from "@mui/material/Button";
+import MuiButton from "@mui/material/Button";
 import { ReactNode } from "react";
 
 interface ButtonProps {
@@ -9,16 +9,17 @@ interface ButtonProps {
   sx?: object;
 }
 
-const StyledButton = ({
+const Button = ({
   backgroundColor = COLORS.primary.magenta,
   children,
   onClick,
   sx,
 }: ButtonProps) => {
   return (
-    <Button
+    <MuiButton
       sx={{
         backgroundColor: backgroundColor,
+        boxShadow: "none",
         color: COLORS.primary.white,
         px: 3,
         py: 1,
@@ -28,8 +29,8 @@ const StyledButton = ({
       variant="contained"
     >
       {children}
-    </Button>
+    </MuiButton>
   );
 };
 
-export default StyledButton;
+export default Button;

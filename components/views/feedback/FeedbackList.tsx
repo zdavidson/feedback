@@ -35,6 +35,7 @@ const FeedbackList = () => {
       {data?.suggestions.map((suggestion: Suggestion) => {
         return (
           <SuggestionCard
+            id={suggestion.id}
             comments={suggestion.comments}
             description={suggestion.description}
             key={suggestion.id}

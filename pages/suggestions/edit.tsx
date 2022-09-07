@@ -1,5 +1,5 @@
 import { Grid, Box } from "@mui/material";
-import StyledButton from "../../components/shared/StyledButton";
+import Button from "../../components/shared/Button";
 import { COLORS } from "../../styles/theme/themeOptions";
 
 const EditFeedback = () => {
@@ -16,12 +16,12 @@ const EditFeedback = () => {
         <Box>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             Go Back{" "}
-            <StyledButton
+            <Button
               backgroundColor={COLORS.primary.blue}
               onClick={() => console.log("clicked")}
             >
               Edit Feedback
-            </StyledButton>
+            </Button>
           </Box>
           <Box>Feedback</Box>
           <Box>Comments</Box>

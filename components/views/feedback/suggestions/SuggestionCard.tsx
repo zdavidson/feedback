@@ -1,9 +1,12 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
+import { useState } from "react";
 import { COLORS } from "../../../../styles/theme/themeOptions";
-import StyledBox from "../../../shared/StyledBox";
-import StyledButton from "../../../shared/StyledButton";
+import StyledBox from "../../../shared/Box";
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
+import Link from "../../../shared/Link";
 
 interface Props {
+  id: number;
   description: string;
   title: string;
   tags: [string];
@@ -12,12 +15,19 @@ interface Props {
 }
 
 const SuggestionCard = ({
+  id,
   description,
   title,
   tags,
   upvotes,
   comments,
 }: Props) => {
+  const [upvoteCount, setUpvoteCount] = useState(upvotes);
+
+  const handleUpvote = () => {
+    setUpvoteCount(upvoteCount + 1);
+  };
+
   return (
     /// change to grid
     <StyledBox
@@ -31,16 +41,16 @@ const SuggestionCard = ({
       }}
     >
       <Box sx={{ display: "flex" }}>
-        <StyledButton
-          backgroundColor={COLORS.background}
-          onClick={() => console.log("clicked")}
+        <Button
+          onClick={handleUpvote}
           sx={{
             alignItems: "center",
+            backgroundColor: COLORS.background,
             color: "black",
             flexDirection: "column",
             height: "fit-content",
             py: 1,
-            px: 1.5,
+            px: 0,
           }}
         >
           <span
@@ -53,12 +63,14 @@ const SuggestionCard = ({
             ^
           </span>
           <Typography sx={{ fontWeight: 700 }} variant="body2">
-            {upvotes}
+            {upvoteCount}
           </Typography>
-        </StyledButton>
+        </Button>
         <Box sx={{ mx: 4 }}>
           <Box>
-            <Typography variant="h3">{title}</Typography>
+            <Link href={`/suggestions/${id}`}>
+              <Typography variant="h3">{title}</Typography>
+            </Link>
             <Typography variant="body2">{description}</Typography>
           </Box>
           <StyledBox
@@ -71,7 +83,6 @@ const SuggestionCard = ({
               width: "fit-content",
             }}
           >
-            {" "}
             <Typography
               sx={{ color: COLORS.primary.blue, fontWeight: 700 }}
               variant="body2"
@@ -81,7 +92,12 @@ const SuggestionCard = ({
           </StyledBox>
         </Box>
       </Box>
-      <Box>{comments}</Box>
+      <Box sx={{ display: "flex", alignItems: "center" }}>
+        <ChatBubbleIcon sx={{ color: "#CDD2EE", mx: 2 }} />
+        <Typography sx={{ fontWeight: 700 }} variant="body1">
+          {comments}
+        </Typography>
+      </Box>
     </StyledBox>
   );
 };

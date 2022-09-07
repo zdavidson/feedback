@@ -3,6 +3,8 @@ type Suggestion {
   title: String
   description: String
   tags: [String]
+  upvotes: Int
+  comments: Int
 }
 
 type Tags {
