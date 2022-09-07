@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { COLORS } from "../../../../../styles/theme/themeOptions";
-import StyledBox from "../../../../shared/StyledBox";
+import StyledBox from "../../../../shared/Box";
 
 import { gql, useQuery } from "@apollo/client";
 

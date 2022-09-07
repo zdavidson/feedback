@@ -1,5 +1,5 @@
 import { COLORS } from "../../../../styles/theme/themeOptions";
-import StyledBox from "../../../shared/StyledBox";
+import StyledBox from "../../../shared/Box";
 import EmojiObjectsOutlinedIcon from "@mui/icons-material/EmojiObjectsOutlined";
 import {
   Box,
@@ -8,7 +8,7 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import Button from "../../../shared/StyledButton";
+import Button from "../../../shared/Button";
 import { useRouter } from "next/router";
 
 const ITEM_HEIGHT = 48;

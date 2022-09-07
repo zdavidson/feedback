@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { TextField as MuiTextField } from "@mui/material";
 import { useState, ChangeEvent } from "react";
 import { COLORS } from "../../styles/theme/themeOptions";
 
@@ -7,7 +7,7 @@ interface TextFieldProps {
   id: string;
 }
 
-const StyledTextField = ({ height, id }: TextFieldProps) => {
+const TextField = ({ height, id }: TextFieldProps) => {
   const [value, setValue] = useState("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -15,7 +15,7 @@ const StyledTextField = ({ height, id }: TextFieldProps) => {
   };
 
   return (
-    <TextField
+    <MuiTextField
       id={id}
       InputProps={{
         disableUnderline: true,
@@ -38,4 +38,4 @@ const StyledTextField = ({ height, id }: TextFieldProps) => {
   );
 };
 
-export default StyledTextField;
+export default TextField;

@@ -1,7 +1,7 @@
-import StyledBox from "../../../../shared/StyledBox";
+import Box from "../../../../shared/Box";
 
 const Roadmap = () => {
-  return <StyledBox sx={{ backgroundColor: "lightblue" }}>Roadmap</StyledBox>;
+  return <Box sx={{ backgroundColor: "lightblue" }}>Roadmap</Box>;
 };
 
 export default Roadmap;
