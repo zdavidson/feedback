@@ -22,7 +22,6 @@ const SuggestionCard = ({ suggestion }: Props) => {
     <StyledBox
       sx={{
         alignItems: "center",
-        backgroundColor: COLORS.primary.white,
         color: COLORS.secondary.navy,
         display: "flex",
         justifyContent: "space-between",

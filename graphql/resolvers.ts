@@ -60,7 +60,7 @@ export const resolvers = {
     comments: () => [
       {
         id: 1,
-        suggestionID: 1,
+        suggestionID: 2,
         user: { name: "Elijah Moss", userName: "@hexagon.bestagon" },
         comment:
           "Also, please allow styles to be applied based on system preferences. I would love to be able to browse Frontend Mentor in the evening after my device’s dark mode turns on without the bright background it currently has.",
@@ -68,7 +68,7 @@ export const resolvers = {
       },
       {
         id: 2,
-        suggestionID: 1,
+        suggestionID: 2,
         user: { name: "James Skinner", userName: "@hummingbird1" },
         comment:
           "Second this! I do a lot of late night coding and reading. Adding a dark theme can be great for preventing eye strain and the headaches that result. It’s also quite a trend with modern apps and  apparently saves battery life.",

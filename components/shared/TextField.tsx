@@ -5,9 +5,10 @@ import { COLORS } from "../../styles/theme/themeOptions";
 interface TextFieldProps {
   height?: number;
   id: string;
+  label?: string;
 }
 
-const TextField = ({ height, id }: TextFieldProps) => {
+const TextField = ({ height, id, label }: TextFieldProps) => {
   const [value, setValue] = useState("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +26,7 @@ const TextField = ({ height, id }: TextFieldProps) => {
           height: height || null,
         },
       }}
+      label={label}
       maxRows={4}
       onChange={handleChange}
       sx={{

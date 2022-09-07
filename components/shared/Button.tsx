@@ -19,8 +19,10 @@ const Button = ({
     <MuiButton
       sx={{
         backgroundColor: backgroundColor,
+        borderRadius: 3,
         boxShadow: "none",
         color: COLORS.primary.white,
+        textTransform: "none",
         px: 3,
         py: 1,
         ...sx,

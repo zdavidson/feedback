@@ -6,6 +6,7 @@ import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import SuggestionCard from "../../components/views/feedback/suggestions/SuggestionCard";
 import Comments from "../../components/views/feedback/suggestions/components/Comments";
+import AddComment from "../../components/views/feedback/suggestions/components/AddComment";
 
 const SuggestionDetailsQuery = gql`
   query {
@@ -64,7 +65,8 @@ const SuggestionDetails = () => {
           </Button>
         </Box>
         <SuggestionCard suggestion={suggestion[0]} />
-        <Comments />
+        <Comments suggestionID={id} />
+        <AddComment />
       </Grid>
     </Grid>
   );
