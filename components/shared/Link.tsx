@@ -1,4 +1,4 @@
-import { COLORS } from "../../styles/theme/themeOptions";
+import { COLORS } from "@/styles/theme/themeOptions";
 import { Box, styled } from "@mui/material";
 import NextLink from "next/link";
 import { ReactNode } from "react";

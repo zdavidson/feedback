@@ -1,4 +1,4 @@
-import Box from "../../../../shared/Box";
+import Box from "@/components/shared/Box";
 
 const Roadmap = () => {
   return <Box sx={{ backgroundColor: "lightblue" }}>Roadmap</Box>;

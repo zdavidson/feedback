@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import { COLORS } from "../../../../../styles/theme/themeOptions";
-import StyledBox from "../../../../shared/Box";
+import { COLORS } from "@/styles/theme/themeOptions";
+import StyledBox from "@/components/shared/Box";
 
 const SiteTitle = () => {
   return (

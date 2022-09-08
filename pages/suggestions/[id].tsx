@@ -1,12 +1,12 @@
-import { COLORS } from "../../styles/theme/themeOptions";
+import { COLORS } from "@/styles/theme/themeOptions";
 import { Box, Grid, Typography } from "@mui/material";
 import Link from "next/link";
-import Button from "../../components/shared/Button";
+import Button from "@/components/shared/Button";
 import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import SuggestionCard from "../../components/views/feedback/suggestions/SuggestionCard";
-import Comments from "../../components/views/feedback/suggestions/components/Comments";
-import AddComment from "../../components/views/feedback/suggestions/components/AddComment";
+import SuggestionCard from "@/components/views/feedback/suggestions/SuggestionCard";
+import Comments from "@/components/views/feedback/suggestions/components/Comments";
+import AddComment from "@/components/views/feedback/suggestions/components/AddComment";
 
 const SuggestionDetailsQuery = gql`
   query {

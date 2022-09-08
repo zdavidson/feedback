@@ -1,8 +1,9 @@
-import { Box } from "@mui/material";
-import { COLORS } from "../../../../../styles/theme/themeOptions";
-import StyledBox from "../../../../shared/Box";
+import { COLORS } from "@/styles/theme/themeOptions";
+import StyledBox from "@/components/shared/Box";
 
 import { gql, useQuery } from "@apollo/client";
+import ButtonBox from "@/components/shared/ButtonBox";
+import { useState } from "react";
 
 const TagsQuery = gql`
   query {
@@ -12,9 +13,14 @@ const TagsQuery = gql`
 
 const Tags = () => {
   const { data, error, loading } = useQuery(TagsQuery);
+  const [clicked, setClicked] = useState(false);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
+
+  const handleSelection = () => {
+    setClicked(!clicked);
+  };
 
   return (
     <StyledBox
@@ -25,8 +31,10 @@ const Tags = () => {
       }}
     >
       {data.tags?.map((name: string, key: number) => (
-        <Box
+        <ButtonBox
+          className={clicked ? "clicked" : ""}
           key={key}
+          onClick={handleSelection}
           sx={{
             backgroundColor: COLORS.secondary.grey.s60,
             borderRadius: 2,
@@ -36,7 +44,7 @@ const Tags = () => {
           }}
         >
           {name}
-        </Box>
+        </ButtonBox>
       ))}
     </StyledBox>
   );

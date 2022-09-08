@@ -1,7 +1,7 @@
-import TextField from "../../../../../components/shared/TextField";
+import TextField from "@/components/shared/TextField";
 import { Box, Typography } from "@mui/material";
-import StyledBox from "../../../../../components/shared/Box";
-import Button from "../../../../../components/shared/Button";
+import StyledBox from "@/components/shared/Box";
+import Button from "@/components/shared/Button";
 
 const AddComment = () => {
   return (

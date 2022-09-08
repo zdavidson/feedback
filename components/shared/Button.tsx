@@ -1,4 +1,4 @@
-import { COLORS } from "../../styles/theme/themeOptions";
+import { COLORS } from "@/styles/theme/themeOptions";
 import MuiButton from "@mui/material/Button";
 import { ReactNode } from "react";
 
