@@ -1,6 +1,6 @@
 import { Grid, Box } from "@mui/material";
-import Button from "../../components/shared/Button";
-import { COLORS } from "../../styles/theme/themeOptions";
+import Button from "@/components/shared/Button";
+import { COLORS } from "@/styles/theme/themeOptions";
 
 const EditFeedback = () => {
   return (

@@ -1,4 +1,4 @@
-import { COLORS } from "../../styles/theme/themeOptions";
+import { COLORS } from "@/styles/theme/themeOptions";
 import { Box as MuiBox } from "@mui/material";
 import { ElementType, ReactNode } from "react";
 

@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import FeedbackBoard from "../components/views/feedback/FeedbackBoard";
-import styles from "../styles/Home.module.css";
+import FeedbackBoard from "@/components/views/feedback/FeedbackBoard";
+import styles from "@/styles/Home.module.css";
 
 const Home: NextPage = () => {
   return (

@@ -8,13 +8,13 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import StyledBox from "../../shared/Box";
-import StyledButton from "../../shared/Button";
-import StyledTextField from "../../shared/TextField";
-import { COLORS } from "../../../styles/theme/themeOptions";
+import StyledBox from "@/components/shared/Box";
+import StyledButton from "@/components/shared/Button";
+import StyledTextField from "@/components/shared/TextField";
+import { COLORS } from "@/styles/theme/themeOptions";
 import AddIcon from "@mui/icons-material/Add";
 import BrushIcon from "@mui/icons-material/Brush";
-import DecorativeCircle from "../../shared/DecorativeCircle";
+import DecorativeCircle from "@/components/shared/DecorativeCircle";
 
 const tags = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 const status = ["Suggestion", "Planned", "In-Progress", "Live"];

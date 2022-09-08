@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
-import { COLORS } from "../../../../styles/theme/themeOptions";
-import StyledBox from "../../../shared/Box";
+import { COLORS } from "@/styles/theme/themeOptions";
+import StyledBox from "@/components/shared/Box";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import Link from "../../../shared/Link";
+import Link from "@/components/shared/Link";
 import Upvotes from "./components/Upvotes";
 
 interface Props {

@@ -1,8 +1,9 @@
-import { Box } from "@mui/material";
-import { COLORS } from "../../../../../styles/theme/themeOptions";
-import StyledBox from "../../../../shared/Box";
+import { COLORS } from "@/styles/theme/themeOptions";
+import StyledBox from "@/components/shared/Box";
 
 import { gql, useQuery } from "@apollo/client";
+import ButtonBox from "@/components/shared/ButtonBox";
+import { Typography } from "@mui/material";
 
 const TagsQuery = gql`
   query {
@@ -22,21 +23,27 @@ const Tags = () => {
         backgroundColor: COLORS.primary.white,
         display: "flex",
         flexWrap: "wrap",
+        p: 2,
+        my: 3,
       }}
     >
       {data.tags?.map((name: string, key: number) => (
-        <Box
+        <ButtonBox
+          className={name === "All" ? "clicked" : ""}
           key={key}
           sx={{
             backgroundColor: COLORS.secondary.grey.s60,
             borderRadius: 2,
+            color: COLORS.primary.blue,
             m: 0.75,
             px: 2,
-            py: 1,
+            py: 0.8,
           }}
         >
-          {name}
-        </Box>
+          <Typography sx={{ fontWeight: 700 }} variant="body2">
+            {name}
+          </Typography>
+        </ButtonBox>
       ))}
     </StyledBox>
   );

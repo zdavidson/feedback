@@ -1,34 +1,11 @@
-import { COLORS } from "../../../../../styles/theme/themeOptions";
+import { COLORS } from "@/styles/theme/themeOptions";
 import { Box, styled, Typography } from "@mui/material";
 import { useState } from "react";
+import ButtonBox from "@/components/shared/ButtonBox";
 
 interface Props {
   upvotes: number;
 }
-
-const StyledBox = styled(Box)({
-  alignItems: "center",
-  backgroundColor: COLORS.background,
-  borderRadius: 6,
-  color: "black",
-  display: "flex",
-  flexDirection: "column",
-  height: 55,
-  justifyContent: "center",
-  py: 1,
-  px: 1.25,
-  width: 40,
-
-  "&:hover": {
-    backgroundColor: "#CFD7FF",
-    cursor: "pointer",
-  },
-
-  "&.clicked": {
-    backgroundColor: COLORS.primary.blue,
-    color: COLORS.primary.white,
-  },
-});
 
 const Upvotes = ({ upvotes }: Props) => {
   const [clicked, setClicked] = useState(false);
@@ -40,7 +17,11 @@ const Upvotes = ({ upvotes }: Props) => {
   };
 
   return (
-    <StyledBox className={clicked ? "clicked" : ""} onClick={handleUpvote}>
+    <ButtonBox
+      className={clicked ? "clicked" : ""}
+      onClick={handleUpvote}
+      sx={{ height: 55, width: 40 }}
+    >
       <span
         style={{
           color: clicked ? COLORS.primary.white : COLORS.primary.blue,
@@ -58,7 +39,7 @@ const Upvotes = ({ upvotes }: Props) => {
       >
         {upvoteCount}
       </Typography>
-    </StyledBox>
+    </ButtonBox>
   );
 };
 

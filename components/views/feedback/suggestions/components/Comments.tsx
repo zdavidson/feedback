@@ -1,4 +1,4 @@
-import Box from "../../../../shared/Box";
+import Box from "@/components/shared/Box";
 import { gql, useQuery } from "@apollo/client";
 import { Typography } from "@mui/material";
 import Comment from "./Comment";
