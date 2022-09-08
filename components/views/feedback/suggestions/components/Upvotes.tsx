@@ -1,5 +1,5 @@
 import { COLORS } from "@/styles/theme/themeOptions";
-import { Typography } from "@mui/material";
+import { Box, styled, Typography } from "@mui/material";
 import { useState } from "react";
 import ButtonBox from "@/components/shared/ButtonBox";
 
@@ -20,7 +20,7 @@ const Upvotes = ({ upvotes }: Props) => {
     <ButtonBox
       className={clicked ? "clicked" : ""}
       onClick={handleUpvote}
-      sx={{ width: "fit-content" }}
+      sx={{ height: 55, width: 40 }}
     >
       <span
         style={{
