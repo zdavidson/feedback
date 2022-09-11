@@ -1,26 +1,43 @@
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import RoadmapColumn from "./RoadmapColumn";
+import { gql, useQuery } from "@apollo/client";
+
+const RoadmapListQuery = gql`
+  query {
+    roadmap {
+      id
+      title
+      description
+      tags
+      upvotes
+      comments
+      status
+    }
+  }
+`;
 
 const RoadmapList = () => {
+  const { data, error, loading } = useQuery(RoadmapListQuery);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
+
   return (
-    <Grid
-      container
-      alignItems="center"
-      justifyContent="space-between"
-      md={11.5}
-      spacing={4}
-      sx={{ mx: 0 }}
-    >
-      <Grid item md={4}>
-        <RoadmapColumn />
-      </Grid>
-      <Grid item md={4}>
-        <RoadmapColumn />
-      </Grid>
-      <Grid item md={4}>
-        <RoadmapColumn />
-      </Grid>
-    </Grid>
+    <Box sx={{ display: "flex", mt: 6, mx: 2 }}>
+      <RoadmapColumn
+        data={data}
+        description="Ideas prioritized for research"
+        sx={{ mr: 4 }}
+        title="Planned"
+      />
+      <RoadmapColumn
+        data={data}
+        description="Currently being developed"
+        sx={{ mr: 4 }}
+        title="In-Progress"
+      />
+      <RoadmapColumn data={data} description="Released features" title="Live" />
+    </Box>
   );
 };
 

@@ -1,12 +1,24 @@
 import { Box, Typography } from "@mui/material";
 import RoadmapCard from "./RoadmapCard";
 
-const RoadmapColumn = () => {
+interface Props {
+  data: any;
+  description: string;
+  sx?: any;
+  title: string;
+}
+
+const RoadmapColumn = ({ data, description, sx, title }: Props) => {
   return (
-    <Box>
-      <Typography variant="h3">Planned</Typography>
-      <Typography variant="body1">Ideas prioritized for research</Typography>
-      <RoadmapCard />
+    <Box sx={{ ...sx }}>
+      <Typography variant="h3">{title}</Typography>
+      <Typography variant="body1">{description}</Typography>
+      {data.roadmap.map((suggestion: any) => {
+        if (suggestion.status === title) {
+          return <RoadmapCard suggestion={suggestion} />;
+        }
+        return null;
+      })}
     </Box>
   );
 };

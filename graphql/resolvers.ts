@@ -90,5 +90,65 @@ export const resolvers = {
         ],
       },
     ],
+    roadmap: () => [
+      {
+        id: 7,
+        title: "Add micro-interactions",
+        description: "Small animations at specific points can add delight.",
+        tags: ["Enhancement"],
+        upvotes: 71,
+        comments: 2,
+        status: "Live",
+      },
+      {
+        id: 8,
+        title: "One-click portfolio generation",
+        description:
+          "Add ability to create professional looking portfolio from profile.",
+        tags: ["Feature"],
+        upvotes: 62,
+        comments: 1,
+        status: "In-Progress",
+      },
+      {
+        id: 9,
+        title: "Bookmark challenges",
+        description: "Be able to bookmark challenges to take later on.",
+        tags: ["Feature"],
+        upvotes: 31,
+        comments: 1,
+        status: "In-Progress",
+      },
+      {
+        id: 10,
+        title: "Animated solution screenshots",
+        description:
+          "Screenshots of solutions with animations don’t display correctly.",
+        tags: ["Bug"],
+        upvotes: 9,
+        comments: 0,
+        status: "In-Progress",
+      },
+      {
+        id: 11,
+        title: "More comprehensive reports",
+        description:
+          "It would be great to see a more detailed breakdown of solutions.",
+        tags: ["Enhancement"],
+        upvotes: 123,
+        comments: 2,
+        status: "Planned",
+      },
+      {
+        id: 12,
+        title: "Learning paths",
+        description:
+          "Sequenced projects for different goals to help people improve.",
+        tags: ["Enhancement"],
+        upvotes: 28,
+        comments: 1,
+        status: "Planned",
+      },
+    ],
   },
 };

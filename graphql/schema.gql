@@ -2,6 +2,7 @@ type Suggestion {
   id: ID!
   title: String
   description: String
+  status: String
   tags: [String]
   upvotes: Int
   comments: Int
@@ -38,6 +39,7 @@ type Status {
 
 type Query {
   comments: [Comment]
+  roadmap: [Suggestion]
   suggestions: [Suggestion]
   tags: [Tags]
 }
