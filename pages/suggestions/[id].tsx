@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import SuggestionCard from "@/components/views/feedback/suggestions/SuggestionCard";
 import Comments from "@/components/views/feedback/suggestions/components/Comments";
 import AddComment from "@/components/views/feedback/suggestions/components/AddComment";
+import { useGetSuggestion } from "lib/supabase/feedbackList";
 
 const SuggestionDetailsQuery = gql`
   query {
@@ -24,14 +25,9 @@ const SuggestionDetailsQuery = gql`
 const SuggestionDetails = () => {
   const router = useRouter();
   const { id } = router.query;
-  const { data, error, loading } = useQuery(SuggestionDetailsQuery);
+  const { data, isLoading } = useGetSuggestion(id);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
-
-  const suggestion: any = data.suggestions.filter(
-    (item: any) => item.id === id
-  );
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <Grid
@@ -64,7 +60,7 @@ const SuggestionDetails = () => {
             Edit Feedback
           </Button>
         </Box>
-        <SuggestionCard suggestion={suggestion[0]} />
+        <SuggestionCard suggestion={data?.[0]} />
         <Comments suggestionID={id} />
         <AddComment />
       </Grid>

@@ -1,58 +1,25 @@
 import { Box } from "@mui/material";
 import SuggestionCard from "./suggestions/SuggestionCard";
-import { gql, useQuery } from "@apollo/client";
-import { useState, useMemo } from "react";
-import { supabase } from "utils/supabaseClient";
-
-const FeedbackListQuery = gql`
-  query {
-    suggestions {
-      id
-      comments
-      description
-      status
-      tags
-      title
-      upvotes
-    }
-  }
-`;
+import { useGetSuggestions } from "lib/supabase/feedbackList";
 
 interface Suggestion {
   id: number;
   title: string;
   description: string;
-  status: string;
-  tags: [string];
+  statusID: string;
+  tags: { name: string };
   upvotes: number;
-  comments: number;
+  comments: [];
 }
 
 const FeedbackList = () => {
-  const [suggestions, setSuggestions] = useState<any>("");
+  const { data, isLoading } = useGetSuggestions();
 
-  useMemo(() => {
-    fetchSuggestions();
-  }, []);
-
-  async function fetchSuggestions() {
-    const { data } = await supabase
-      .from("suggestions")
-      .select(`*, comments (content)`);
-
-    setSuggestions(data);
-  }
-  console.log(suggestions);
-
-  const { data, error, loading } = useQuery(FeedbackListQuery);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
-
+  if (isLoading) return <p>Loading...</p>;
   return (
     <Box>
-      {data?.suggestions.map((suggestion: Suggestion, key: number) => {
-        if (!suggestion.status) {
+      {data?.map((suggestion: Suggestion, key: number) => {
+        if (suggestion.statusID === null) {
           return <SuggestionCard key={key} suggestion={suggestion} />;
         } else return "";
       })}

@@ -3,10 +3,10 @@ import { COLORS } from "@/styles/theme/themeOptions";
 import { Typography } from "@mui/material";
 
 interface Props {
-  tags: [string];
+  tag: string;
 }
 
-const Tags = ({ tags }: Props) => {
+const Tags = ({ tag }: Props) => {
   return (
     <StyledBox
       sx={{
@@ -22,7 +22,7 @@ const Tags = ({ tags }: Props) => {
         sx={{ color: COLORS.primary.blue, fontWeight: 700 }}
         variant="body2"
       >
-        {tags}
+        {tag}
       </Typography>
     </StyledBox>
   );

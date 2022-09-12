@@ -11,9 +11,9 @@ interface Props {
     id: number;
     title: string;
     description: string;
-    tags: [string];
+    tags: { name: string };
     upvotes: number;
-    comments: number;
+    comments: [];
   };
 }
 
@@ -40,13 +40,13 @@ const SuggestionCard = ({ suggestion }: Props) => {
             </Link>
             <Typography variant="body2">{suggestion.description}</Typography>
           </Box>
-          <Tags tags={suggestion.tags} />
+          <Tags tag={suggestion.tags.name} />
         </Box>
       </Box>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <ChatBubbleIcon sx={{ color: "#CDD2EE", mx: 2 }} />
         <Typography sx={{ fontWeight: 700 }} variant="body1">
-          {suggestion.comments}
+          {suggestion.comments.length}
         </Typography>
       </Box>
     </StyledBox>
