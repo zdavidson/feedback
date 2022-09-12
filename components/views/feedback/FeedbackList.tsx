@@ -1,6 +1,8 @@
 import { Box } from "@mui/material";
 import SuggestionCard from "./suggestions/SuggestionCard";
 import { gql, useQuery } from "@apollo/client";
+import { useState, useMemo } from "react";
+import { supabase } from "utils/supabaseClient";
 
 const FeedbackListQuery = gql`
   query {
@@ -27,6 +29,21 @@ interface Suggestion {
 }
 
 const FeedbackList = () => {
+  const [suggestions, setSuggestions] = useState<any>("");
+
+  useMemo(() => {
+    fetchSuggestions();
+  }, []);
+
+  async function fetchSuggestions() {
+    const { data } = await supabase
+      .from("suggestions")
+      .select(`*, comments (content)`);
+
+    setSuggestions(data);
+  }
+  console.log(suggestions);
+
   const { data, error, loading } = useQuery(FeedbackListQuery);
 
   if (loading) return <p>Loading...</p>;
