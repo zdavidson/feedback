@@ -1,7 +1,8 @@
 import { Box, Grid } from "@mui/material";
 import FeedbackList from "./FeedbackList";
-import Header from "./header/Header";
+import Header from "../../shared/header/Header";
 import SideBar from "./sidebar/SideBar";
+import SuggestionsSort from "@/components/shared/header/SuggestionsSort";
 
 const FeedbackBoard = () => {
   return (
@@ -18,7 +19,7 @@ const FeedbackBoard = () => {
       </Grid>
       <Grid item md={8}>
         <Box>
-          <Header />
+          <Header children={<SuggestionsSort />} />
           <FeedbackList />
         </Box>
       </Grid>

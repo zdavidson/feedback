@@ -1,13 +1,14 @@
 import { COLORS } from "@/styles/theme/themeOptions";
-import { Box, styled, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import { useState } from "react";
 import ButtonBox from "@/components/shared/ButtonBox";
 
 interface Props {
+  sx?: any;
   upvotes: number;
 }
 
-const Upvotes = ({ upvotes }: Props) => {
+const Upvotes = ({ sx, upvotes }: Props) => {
   const [clicked, setClicked] = useState(false);
   const [upvoteCount, setUpvoteCount] = useState(upvotes);
 
@@ -20,7 +21,12 @@ const Upvotes = ({ upvotes }: Props) => {
     <ButtonBox
       className={clicked ? "clicked" : ""}
       onClick={handleUpvote}
-      sx={{ height: 55, width: 40 }}
+      sx={{
+        height: 55,
+        justifyContent: "center",
+        width: 40,
+        ...sx,
+      }}
     >
       <span
         style={{

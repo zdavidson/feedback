@@ -5,6 +5,7 @@ export const typeDefs = gql`
     id: ID!
     title: String
     description: String
+    status: String
     tags: [String]
     upvotes: Int
     comments: Int
@@ -40,7 +41,9 @@ export const typeDefs = gql`
   }
 
   type Query {
+    activeSuggestions: [Suggestion]
     comments: [Comment]
+    roadmap: [Suggestion]
     suggestions: [Suggestion]
     tags: [String]
   }
