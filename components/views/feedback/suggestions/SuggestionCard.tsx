@@ -3,7 +3,8 @@ import { COLORS } from "@/styles/theme/themeOptions";
 import StyledBox from "@/components/shared/Box";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import Link from "@/components/shared/Link";
-import Upvotes from "./components/Upvotes";
+import Upvotes from "@/components/shared/Upvotes";
+import Tags from "@/components/shared/Tags";
 
 interface Props {
   suggestion: {
@@ -18,7 +19,6 @@ interface Props {
 
 const SuggestionCard = ({ suggestion }: Props) => {
   return (
-    /// change to grid
     <StyledBox
       sx={{
         alignItems: "center",
@@ -29,7 +29,10 @@ const SuggestionCard = ({ suggestion }: Props) => {
       }}
     >
       <Box sx={{ display: "flex" }}>
-        <Upvotes upvotes={suggestion.upvotes} />
+        <Upvotes
+          sx={{ flexDirection: "column" }}
+          upvotes={suggestion.upvotes}
+        />
         <Box sx={{ mx: 4 }}>
           <Box>
             <Link href={`/suggestions/${suggestion.id}`}>
@@ -37,23 +40,7 @@ const SuggestionCard = ({ suggestion }: Props) => {
             </Link>
             <Typography variant="body2">{suggestion.description}</Typography>
           </Box>
-          <StyledBox
-            sx={{
-              backgroundColor: COLORS.background,
-              m: 0,
-              mt: 2,
-              py: 0.75,
-              px: 2.25,
-              width: "fit-content",
-            }}
-          >
-            <Typography
-              sx={{ color: COLORS.primary.blue, fontWeight: 700 }}
-              variant="body2"
-            >
-              {suggestion.tags}
-            </Typography>
-          </StyledBox>
+          <Tags tags={suggestion.tags} />
         </Box>
       </Box>
       <Box sx={{ display: "flex", alignItems: "center" }}>

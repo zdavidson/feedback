@@ -8,6 +8,7 @@ const FeedbackListQuery = gql`
       id
       comments
       description
+      status
       tags
       title
       upvotes
@@ -19,6 +20,7 @@ interface Suggestion {
   id: number;
   title: string;
   description: string;
+  status: string;
   tags: [string];
   upvotes: number;
   comments: number;
@@ -33,7 +35,9 @@ const FeedbackList = () => {
   return (
     <Box>
       {data?.suggestions.map((suggestion: Suggestion, key: number) => {
-        return <SuggestionCard key={key} suggestion={suggestion} />;
+        if (!suggestion.status) {
+          return <SuggestionCard key={key} suggestion={suggestion} />;
+        } else return "";
       })}
     </Box>
   );

@@ -9,8 +9,6 @@ const StyledBox = styled(Box)({
   backgroundColor: COLORS.background,
   borderRadius: 6,
   display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
   py: 1,
   px: 1.25,
 
@@ -43,7 +41,7 @@ const ButtonBox = ({ className, children, onClick, sx }: Props) => {
     <StyledBox
       className={className || clicked ? "clicked" : ""}
       onClick={onClick || handleSelection}
-      sx={sx}
+      sx={{ ...sx }}
     >
       {children}
     </StyledBox>

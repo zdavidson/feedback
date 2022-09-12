@@ -41,6 +41,7 @@ export const typeDefs = gql`
   }
 
   type Query {
+    activeSuggestions: [Suggestion]
     comments: [Comment]
     roadmap: [Suggestion]
     suggestions: [Suggestion]

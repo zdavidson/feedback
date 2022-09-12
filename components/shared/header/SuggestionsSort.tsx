@@ -21,7 +21,7 @@ const MenuProps = {
 
 const SuggestionsSortQuery = gql`
   query {
-    suggestions {
+    activeSuggestions {
       id
     }
   }
@@ -42,7 +42,7 @@ const SuggestionsSort = () => {
     >
       <EmojiObjectsOutlinedIcon />
       <Typography sx={{ ml: 1 }} variant="h3">
-        {data?.suggestions.length || 0} Suggestions
+        {data?.activeSuggestions.length || 0} Suggestions
       </Typography>
 
       <Select
