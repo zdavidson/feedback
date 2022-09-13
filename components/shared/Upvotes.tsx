@@ -3,6 +3,7 @@ import { Typography } from "@mui/material";
 import { useState } from "react";
 import ButtonBox from "@/components/shared/ButtonBox";
 import { supabase } from "utils/supabaseClient";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface Props {
   suggestionID: number;
@@ -12,7 +13,7 @@ interface Props {
 
 const Upvotes = ({ suggestionID, sx, upvotes }: Props) => {
   const [clicked, setClicked] = useState(false);
-  const [upvoteCount, setUpvoteCount] = useState(upvotes);
+  const queryClient = useQueryClient();
 
   const handleClick = async (e: any, id: number, upvotes: number) => {
     const { data, error } = await supabase
@@ -26,14 +27,7 @@ const Upvotes = ({ suggestionID, sx, upvotes }: Props) => {
     }
 
     if (data) {
-      console.log("Data: ", data);
-
-      if (clicked) {
-        setUpvoteCount(upvoteCount - 1);
-      }
-      if (!clicked) {
-        setUpvoteCount(upvoteCount + 1);
-      }
+      queryClient.refetchQueries({ queryKey: ["suggestions-list"] });
       setClicked(!clicked);
     }
   };
@@ -43,8 +37,8 @@ const Upvotes = ({ suggestionID, sx, upvotes }: Props) => {
       className={clicked ? "clicked" : ""}
       onClick={(e) => {
         clicked
-          ? handleClick(e, suggestionID, upvoteCount - 1)
-          : handleClick(e, suggestionID, upvoteCount + 1);
+          ? handleClick(e, suggestionID, upvotes - 1)
+          : handleClick(e, suggestionID, upvotes + 1);
       }}
       sx={{
         height: 55,
@@ -68,7 +62,7 @@ const Upvotes = ({ suggestionID, sx, upvotes }: Props) => {
         }}
         variant="body2"
       >
-        {upvoteCount}
+        {upvotes}
       </Typography>
     </ButtonBox>
   );
