@@ -27,19 +27,25 @@ const Upvotes = ({ suggestionID, sx, upvotes }: Props) => {
 
     if (data) {
       console.log("Data: ", data);
-      setUpvoteCount(upvoteCount + 1);
+
+      if (clicked) {
+        setUpvoteCount(upvoteCount - 1);
+      }
+      if (!clicked) {
+        setUpvoteCount(upvoteCount + 1);
+      }
       setClicked(!clicked);
     }
   };
 
-  // const handleUpvote = () => {
-  //   clicked ? setUpvoteCount(upvoteCount - 1) : setUpvoteCount(upvoteCount + 1);
-  // };
-
   return (
     <ButtonBox
       className={clicked ? "clicked" : ""}
-      onClick={(e) => handleClick(e, suggestionID, upvotes + 1)}
+      onClick={(e) => {
+        clicked
+          ? handleClick(e, suggestionID, upvoteCount - 1)
+          : handleClick(e, suggestionID, upvoteCount + 1);
+      }}
       sx={{
         height: 55,
         justifyContent: "center",
