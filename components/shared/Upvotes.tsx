@@ -2,25 +2,44 @@ import { COLORS } from "@/styles/theme/themeOptions";
 import { Typography } from "@mui/material";
 import { useState } from "react";
 import ButtonBox from "@/components/shared/ButtonBox";
+import { supabase } from "utils/supabaseClient";
 
 interface Props {
+  suggestionID: number;
   sx?: any;
   upvotes: number;
 }
 
-const Upvotes = ({ sx, upvotes }: Props) => {
+const Upvotes = ({ suggestionID, sx, upvotes }: Props) => {
   const [clicked, setClicked] = useState(false);
   const [upvoteCount, setUpvoteCount] = useState(upvotes);
 
-  const handleUpvote = () => {
-    clicked ? setUpvoteCount(upvoteCount - 1) : setUpvoteCount(upvoteCount + 1);
-    setClicked(!clicked);
+  const handleClick = async (e: any, id: number, upvotes: number) => {
+    const { data, error } = await supabase
+      .from("suggestions")
+      .update({ upvotes })
+      .eq("id", id)
+      .select();
+
+    if (error) {
+      console.log("Error: ", error);
+    }
+
+    if (data) {
+      console.log("Data: ", data);
+      setUpvoteCount(upvoteCount + 1);
+      setClicked(!clicked);
+    }
   };
+
+  // const handleUpvote = () => {
+  //   clicked ? setUpvoteCount(upvoteCount - 1) : setUpvoteCount(upvoteCount + 1);
+  // };
 
   return (
     <ButtonBox
       className={clicked ? "clicked" : ""}
-      onClick={handleUpvote}
+      onClick={(e) => handleClick(e, suggestionID, upvotes + 1)}
       sx={{
         height: 55,
         justifyContent: "center",

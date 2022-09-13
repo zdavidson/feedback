@@ -30,6 +30,7 @@ const SuggestionCard = ({ suggestion }: Props) => {
     >
       <Box sx={{ display: "flex" }}>
         <Upvotes
+          suggestionID={suggestion.id}
           sx={{ flexDirection: "column" }}
           upvotes={suggestion.upvotes}
         />
