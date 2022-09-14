@@ -16,14 +16,16 @@ const RoadmapCard = ({ suggestion }: Props) => {
   const [color, setColor] = useState("");
 
   useMemo(() => {
-    if (suggestion.status === "Planned") {
+    if (suggestion.statuses.name === "Planned") {
       setColor(COLORS.tertiary.tangerine);
-    } else if (suggestion.status === "In-Progress") {
+    } else if (suggestion.statuses.name === "In-Progress") {
       setColor(COLORS.primary.magenta);
     } else {
       setColor(COLORS.tertiary.lightBlue);
     }
   }, [color]);
+
+  console.log(suggestion);
 
   return (
     <StyledBox
@@ -45,15 +47,16 @@ const RoadmapCard = ({ suggestion }: Props) => {
             mr: 2,
           }}
         />
-        {suggestion.status}
+        {suggestion.statuses.name}
       </Typography>
       <Link href={`/suggestions/${suggestion.id}`}>
         <Typography variant="h3">{suggestion.title}</Typography>
       </Link>
       <Typography variant="body1">{suggestion.description}</Typography>
-      <Tags tags={suggestion.tags} />
+      <Tags tag={suggestion.tags.name} />
       <Box sx={{ display: "flex", justifyContent: "space-between", mt: 2 }}>
         <Upvotes
+          suggestionID={suggestion.id}
           sx={{
             display: "flex",
             height: 40,
@@ -66,7 +69,7 @@ const RoadmapCard = ({ suggestion }: Props) => {
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <ChatBubbleIcon sx={{ color: "#CDD2EE", mx: 2 }} />
           <Typography sx={{ fontWeight: 700 }} variant="body1">
-            {suggestion.comments}
+            {suggestion.comments.length}
           </Typography>
         </Box>
       </Box>

@@ -15,7 +15,7 @@ const Upvotes = ({ suggestionID, sx, upvotes }: Props) => {
   const [clicked, setClicked] = useState(false);
   const queryClient = useQueryClient();
 
-  const handleClick = async (e: any, id: number, upvotes: number) => {
+  const handleClick = async (id: number, upvotes: number) => {
     const { data, error } = await supabase
       .from("suggestions")
       .update({ upvotes })
@@ -35,10 +35,10 @@ const Upvotes = ({ suggestionID, sx, upvotes }: Props) => {
   return (
     <ButtonBox
       className={clicked ? "clicked" : ""}
-      onClick={(e) => {
+      onClick={() => {
         clicked
-          ? handleClick(e, suggestionID, upvotes - 1)
-          : handleClick(e, suggestionID, upvotes + 1);
+          ? handleClick(suggestionID, upvotes - 1)
+          : handleClick(suggestionID, upvotes + 1);
       }}
       sx={{
         height: 55,

@@ -1,26 +1,11 @@
 import { Box } from "@mui/material";
 import RoadmapColumn from "./RoadmapColumn";
-import { gql, useQuery } from "@apollo/client";
-
-const RoadmapListQuery = gql`
-  query {
-    roadmap {
-      id
-      title
-      description
-      tags
-      upvotes
-      comments
-      status
-    }
-  }
-`;
+import { useGetSuggestions } from "lib/supabase/feedbackList";
 
 const RoadmapList = () => {
-  const { data, error, loading } = useQuery(RoadmapListQuery);
+  const { data, isLoading } = useGetSuggestions();
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <Box sx={{ display: "flex", mt: 6, mx: 2 }}>

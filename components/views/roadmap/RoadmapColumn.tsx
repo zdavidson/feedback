@@ -13,8 +13,8 @@ const RoadmapColumn = ({ data, description, sx, title }: Props) => {
     <Box sx={{ ...sx }}>
       <Typography variant="h3">{title}</Typography>
       <Typography variant="body1">{description}</Typography>
-      {data.roadmap.map((suggestion: any) => {
-        if (suggestion.status === title) {
+      {data?.map((suggestion: any) => {
+        if (suggestion?.statuses?.name === title) {
           return <RoadmapCard suggestion={suggestion} />;
         }
         return null;

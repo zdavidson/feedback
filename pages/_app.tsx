@@ -2,8 +2,6 @@ import * as React from "react";
 import type { AppProps } from "next/app";
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
-import { ApolloProvider } from "@apollo/client";
-import apolloClient from "../lib/apollo";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
@@ -37,14 +35,12 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ApolloProvider client={apolloClient}>
-        <CacheProvider value={emotionCache}>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </CacheProvider>
-      </ApolloProvider>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
     </QueryClientProvider>
   );
 };

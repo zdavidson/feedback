@@ -2,23 +2,13 @@ import { Box } from "@mui/material";
 import SuggestionCard from "./suggestions/SuggestionCard";
 import { useGetSuggestions } from "lib/supabase/feedbackList";
 
-interface Suggestion {
-  id: number;
-  title: string;
-  description: string;
-  statusID: string;
-  tags: { name: string };
-  upvotes: number;
-  comments: [];
-}
-
 const FeedbackList = () => {
   const { data, isLoading } = useGetSuggestions();
 
   if (isLoading) return <p>Loading...</p>;
   return (
     <Box>
-      {data?.map((suggestion: Suggestion, key: number) => {
+      {data?.map((suggestion: any, key: number) => {
         if (suggestion.statusID === null) {
           return <SuggestionCard key={key} suggestion={suggestion} />;
         } else return "";

@@ -1,11 +1,11 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { supabase } from "utils/supabaseClient";
 
 // Suggestions List
 async function getSuggestions() {
   let { error, data } = await supabase
     .from("suggestions")
-    .select(`*, comments (content), tags (name)`)
+    .select(`*, comments (content), tags (name), statuses (name)`)
     .order("id");
 
   if (error) {
@@ -22,7 +22,9 @@ export const useGetSuggestions = () => {
 async function getSuggestion(id: string | string[] | undefined) {
   let { error, data } = await supabase
     .from("suggestions")
-    .select(`*, comments (content), tags (name)`)
+    .select(
+      `*, comments (content, users(name, userName), replies(content, users(name, userName))), tags (name), statuses (name)`
+    )
     .eq("id", id);
 
   if (error) {
@@ -35,12 +37,9 @@ export const useGetSuggestion = (id: string | string[] | undefined) => {
   return useQuery([`suggestion-${id}`], () => getSuggestion(id));
 };
 
-// Upvote
-async function addUpvote(suggestionID: number, currentUpvotes: number) {
-  let { error, data } = await supabase
-    .from("suggestions")
-    .update({ upvotes: currentUpvotes })
-    .match({ id: suggestionID });
+// Get All Tags
+async function getTags() {
+  let { error, data } = await supabase.from("tags").select(`*`).order("id");
 
   if (error) {
     throw new Error();
@@ -48,10 +47,20 @@ async function addUpvote(suggestionID: number, currentUpvotes: number) {
   return data;
 }
 
-export const useAddUpvote = (suggestionID: number, currentUpvotes: any) => {
-  return useMutation(() => addUpvote(suggestionID, currentUpvotes), {
-    onSuccess: async () => {
-      console.log("added");
-    },
-  });
+export const useGetTags = () => {
+  return useQuery(["tags-list"], () => getTags());
+};
+
+// Get All Statuses
+async function getStatuses() {
+  let { error, data } = await supabase.from("statuses").select(`*`).order("id");
+
+  if (error) {
+    throw new Error();
+  }
+  return data;
+}
+
+export const useGetStatuses = () => {
+  return useQuery(["statuses-list"], () => getStatuses());
 };

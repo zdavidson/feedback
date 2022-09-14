@@ -2,25 +2,11 @@ import { COLORS } from "@/styles/theme/themeOptions";
 import { Box, Grid, Typography } from "@mui/material";
 import Link from "next/link";
 import Button from "@/components/shared/Button";
-import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import SuggestionCard from "@/components/views/feedback/suggestions/SuggestionCard";
 import Comments from "@/components/views/feedback/suggestions/components/Comments";
 import AddComment from "@/components/views/feedback/suggestions/components/AddComment";
 import { useGetSuggestion } from "lib/supabase/feedbackList";
-
-const SuggestionDetailsQuery = gql`
-  query {
-    suggestions {
-      id
-      comments
-      description
-      tags
-      title
-      upvotes
-    }
-  }
-`;
 
 const SuggestionDetails = () => {
   const router = useRouter();
@@ -61,7 +47,7 @@ const SuggestionDetails = () => {
           </Button>
         </Box>
         <SuggestionCard suggestion={data?.[0]} />
-        <Comments suggestionID={id} />
+        <Comments comments={data?.[0].comments} />
         <AddComment />
       </Grid>
     </Grid>

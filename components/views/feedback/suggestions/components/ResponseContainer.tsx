@@ -23,13 +23,13 @@ const ResponseContainer = ({ response }: Props) => {
             }}
           >
             <Typography sx={{ fontWeight: 700 }} variant="body2">
-              {response.user.name}
+              {response.users.name}
             </Typography>
-            <Typography variant="body2">{response.user.userName}</Typography>
+            <Typography variant="body2">{response.users.userName}</Typography>
           </Box>
           <Button sx={{ textTransform: "none" }}>Reply</Button>
         </Box>
-        <Box>{response.comment}</Box>
+        <Box>{response.content}</Box>
       </Box>
     </Box>
   );
