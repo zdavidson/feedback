@@ -20,7 +20,7 @@ import BrushIcon from "@mui/icons-material/Brush";
 import DecorativeCircle from "@/components/decorative-circle";
 import { useGetStatuses, useGetTags } from "lib/supabase/feedbackList";
 import { supabase } from "utils/supabaseClient";
-import React from "react";
+import React, { FormEvent } from "react";
 
 interface Props {
   role: string;
@@ -101,7 +101,7 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
         <FormControl>
           <StyledBox
             component="form"
-            onSubmit={(e: any) => {
+            onSubmit={(e: FormEvent<HTMLDivElement>) => {
               role === "edit" ? handleEdit(e) : handleSubmit(e);
             }}
             sx={{ backgroundColor: COLORS.primary.white, px: 6, py: 5 }}

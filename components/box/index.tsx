@@ -1,11 +1,11 @@
 import { COLORS } from "@/styles/theme/themeOptions";
 import { Box as MuiBox } from "@mui/material";
-import { ElementType, ReactNode } from "react";
+import { ElementType, FormEvent, ReactNode } from "react";
 
 interface BoxProps {
   children: ReactNode;
   component?: ElementType<any>;
-  onSubmit?: any;
+  onSubmit?: (e: FormEvent<HTMLDivElement>) => void;
   sx?: {};
 }
 
