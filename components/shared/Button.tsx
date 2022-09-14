@@ -5,7 +5,8 @@ import { ReactNode } from "react";
 interface ButtonProps {
   backgroundColor?: string;
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
+  type?: "button" | "submit" | "reset" | undefined;
   sx?: object;
 }
 
@@ -13,6 +14,7 @@ const Button = ({
   backgroundColor = COLORS.primary.magenta,
   children,
   onClick,
+  type,
   sx,
 }: ButtonProps) => {
   return (
@@ -28,6 +30,7 @@ const Button = ({
         ...sx,
       }}
       onClick={onClick}
+      type={type}
       variant="contained"
     >
       {children}

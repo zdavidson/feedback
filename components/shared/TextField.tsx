@@ -6,9 +6,10 @@ interface TextFieldProps {
   height?: number;
   id: string;
   label?: string;
+  name?: string;
 }
 
-const TextField = ({ height, id, label }: TextFieldProps) => {
+const TextField = ({ height, id, label, name }: TextFieldProps) => {
   const [value, setValue] = useState("");
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -28,6 +29,7 @@ const TextField = ({ height, id, label }: TextFieldProps) => {
       }}
       label={label}
       maxRows={4}
+      name={name}
       onChange={handleChange}
       sx={{
         my: 2,

@@ -41,7 +41,7 @@ const SuggestionCard = ({ suggestion }: Props) => {
             </Link>
             <Typography variant="body2">{suggestion.description}</Typography>
           </Box>
-          <Tags tag={suggestion.tags.name} />
+          <Tags tag={suggestion.tags?.name} />
         </Box>
       </Box>
       <Box sx={{ display: "flex", alignItems: "center" }}>

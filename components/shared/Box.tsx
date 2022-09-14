@@ -5,13 +5,15 @@ import { ElementType, ReactNode } from "react";
 interface BoxProps {
   children: ReactNode;
   component?: ElementType<any>;
+  onSubmit?: any;
   sx?: {};
 }
 
-const Box = ({ children, component, sx }: BoxProps) => {
+const Box = ({ children, component, onSubmit, sx }: BoxProps) => {
   return (
     <MuiBox
       component={component}
+      onSubmit={onSubmit}
       sx={{
         borderRadius: 2,
         backgroundColor: COLORS.primary.white,
