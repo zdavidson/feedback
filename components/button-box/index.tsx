@@ -1,6 +1,6 @@
 import { COLORS } from "@/styles/theme/themeOptions";
 import styled from "@emotion/styled";
-import { Box } from "@mui/material";
+import { Box, SxProps, Theme } from "@mui/material";
 import { useState } from "react";
 import { ReactNode } from "react";
 
@@ -26,8 +26,8 @@ const StyledBox = styled(Box)({
 interface Props {
   children: ReactNode;
   className?: string;
-  onClick?: (e: any) => Promise<void> | any;
-  sx?: any;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => Promise<void> | any;
+  sx?: SxProps<Theme> | undefined;
 }
 
 const ButtonBox = ({ className, children, onClick, sx }: Props) => {

@@ -8,9 +8,9 @@ const FeedbackList = () => {
   if (isLoading) return <p>Loading...</p>;
   return (
     <Box>
-      {data?.map((suggestion: any, key: number) => {
+      {data?.map((suggestion: any) => {
         if (suggestion.statusID === null) {
-          return <SuggestionCard key={key} suggestion={suggestion} />;
+          return <SuggestionCard key={suggestion.id} suggestion={suggestion} />;
         } else return "";
       })}
     </Box>

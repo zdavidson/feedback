@@ -23,7 +23,7 @@ async function getSuggestion(id: string | string[] | undefined) {
   let { error, data } = await supabase
     .from("suggestions")
     .select(
-      `*, comments (content, users(name, userName), replies(content, users(name, userName))), tags (name), statuses (name)`
+      `*, comments (content, id, users(name, userName), replies(content, id, users(name, userName))), tags (name), statuses (name)`
     )
     .eq("id", id);
 
