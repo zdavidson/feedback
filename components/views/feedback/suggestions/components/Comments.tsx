@@ -1,46 +1,17 @@
 import Box from "@/components/shared/Box";
-import { gql, useQuery } from "@apollo/client";
 import { Typography } from "@mui/material";
 import Comment from "./Comment";
 
-const CommentsQuery = gql`
-  query {
-    comments {
-      id
-      suggestionID
-      comment
-      replies {
-        id
-        commentID
-        comment
-        user {
-          name
-          userName
-        }
-      }
-      user {
-        name
-        userName
-      }
-    }
-  }
-`;
-
 interface Props {
-  suggestionID?: any;
+  comments: [any];
 }
 
-const Comments = ({ suggestionID }: Props) => {
-  const { data, error, loading } = useQuery(CommentsQuery);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
-
-  if (data.comments[0].suggestionID == suggestionID)
+const Comments = ({ comments }: Props) => {
+  if (comments.length)
     return (
       <Box>
-        <Typography variant="h3">{data.comments.length} Comments</Typography>
-        {data.comments.map((comment: any, key: number) => {
+        <Typography variant="h3">{comments.length} Comments</Typography>
+        {comments.map((comment: any, key: number) => {
           return <Comment comment={comment} key={key} />;
         })}
       </Box>

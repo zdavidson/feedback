@@ -2,36 +2,18 @@ import { COLORS } from "@/styles/theme/themeOptions";
 import { Box, Grid, Typography } from "@mui/material";
 import Link from "next/link";
 import Button from "@/components/shared/Button";
-import { gql, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import SuggestionCard from "@/components/views/feedback/suggestions/SuggestionCard";
 import Comments from "@/components/views/feedback/suggestions/components/Comments";
 import AddComment from "@/components/views/feedback/suggestions/components/AddComment";
-
-const SuggestionDetailsQuery = gql`
-  query {
-    suggestions {
-      id
-      comments
-      description
-      tags
-      title
-      upvotes
-    }
-  }
-`;
+import { useGetSuggestion } from "lib/supabase/feedbackList";
 
 const SuggestionDetails = () => {
   const router = useRouter();
   const { id } = router.query;
-  const { data, error, loading } = useQuery(SuggestionDetailsQuery);
+  const { data, isLoading } = useGetSuggestion(id);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
-
-  const suggestion: any = data.suggestions.filter(
-    (item: any) => item.id === id
-  );
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <Grid
@@ -64,8 +46,8 @@ const SuggestionDetails = () => {
             Edit Feedback
           </Button>
         </Box>
-        <SuggestionCard suggestion={suggestion[0]} />
-        <Comments suggestionID={id} />
+        <SuggestionCard suggestion={data?.[0]} />
+        <Comments comments={data?.[0].comments} />
         <AddComment />
       </Grid>
     </Grid>

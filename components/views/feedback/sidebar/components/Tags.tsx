@@ -1,21 +1,15 @@
 import { COLORS } from "@/styles/theme/themeOptions";
 import StyledBox from "@/components/shared/Box";
 
-import { gql, useQuery } from "@apollo/client";
+import { useGetTags } from "lib/supabase/feedbackList";
+
 import ButtonBox from "@/components/shared/ButtonBox";
 import { Typography } from "@mui/material";
 
-const TagsQuery = gql`
-  query {
-    tags
-  }
-`;
-
 const Tags = () => {
-  const { data, error, loading } = useQuery(TagsQuery);
+  const { data: tags, isLoading } = useGetTags();
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <StyledBox
@@ -27,10 +21,10 @@ const Tags = () => {
         my: 3,
       }}
     >
-      {data.tags?.map((name: string, key: number) => (
+      {tags?.map((tag: any) => (
         <ButtonBox
-          className={name === "All" ? "clicked" : ""}
-          key={key}
+          className={tag.name === "All" ? "clicked" : ""}
+          key={tag.id}
           sx={{
             backgroundColor: COLORS.secondary.grey.s60,
             borderRadius: 2,
@@ -41,7 +35,7 @@ const Tags = () => {
           }}
         >
           <Typography sx={{ fontWeight: 700 }} variant="body2">
-            {name}
+            {tag.name}
           </Typography>
         </ButtonBox>
       ))}

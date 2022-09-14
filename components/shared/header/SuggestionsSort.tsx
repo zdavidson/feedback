@@ -8,8 +8,8 @@ import {
   SelectChangeEvent,
   Typography,
 } from "@mui/material";
-import { gql, useQuery } from "@apollo/client";
-import React from "react";
+import { useGetSuggestions } from "lib/supabase/feedbackList";
+import React, { useMemo } from "react";
 import { COLORS } from "@/styles/theme/themeOptions";
 
 const MenuProps = {
@@ -34,24 +34,25 @@ const MenuProps = {
   },
 };
 
-const SuggestionsSortQuery = gql`
-  query {
-    activeSuggestions {
-      id
-    }
-  }
-`;
-
 const SuggestionsSort = () => {
   const [sort, setSort] = React.useState("");
-  const { data, error, loading } = useQuery(SuggestionsSortQuery);
+  const { data, isLoading } = useGetSuggestions();
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
+  let suggestionCount = 0;
 
   const handleChange = (event: SelectChangeEvent) => {
     setSort(event.target.value as string);
   };
+
+  useMemo(() => {
+    data?.forEach((suggestion) => {
+      if (suggestion.statusID === null) {
+        suggestionCount++;
+      }
+    });
+  }, [data]);
+
+  if (isLoading) return <p>Loading...</p>;
 
   return (
     <Box
@@ -62,7 +63,7 @@ const SuggestionsSort = () => {
     >
       <EmojiObjectsOutlinedIcon />
       <Typography sx={{ ml: 1 }} variant="h3">
-        {data?.activeSuggestions.length || 0} Suggestions
+        {suggestionCount || 0} Suggestions
       </Typography>
 
       <Box sx={{ minWidth: 120, ml: 4 }}>

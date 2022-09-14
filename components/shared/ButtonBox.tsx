@@ -26,7 +26,7 @@ const StyledBox = styled(Box)({
 interface Props {
   children: ReactNode;
   className?: string;
-  onClick?: () => void;
+  onClick?: (e: any) => Promise<void> | any;
   sx?: any;
 }
 

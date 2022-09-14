@@ -15,9 +15,7 @@ import { COLORS } from "@/styles/theme/themeOptions";
 import AddIcon from "@mui/icons-material/Add";
 import BrushIcon from "@mui/icons-material/Brush";
 import DecorativeCircle from "@/components/shared/DecorativeCircle";
-
-const tags = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
-const status = ["Suggestion", "Planned", "In-Progress", "Live"];
+import { useGetStatuses, useGetTags } from "lib/supabase/feedbackList";
 
 interface Props {
   role: string;
@@ -25,6 +23,9 @@ interface Props {
 }
 
 const UpsertFeedbackContainer = ({ role, title }: Props) => {
+  const { data: tags } = useGetTags();
+  const { data: statuses } = useGetStatuses();
+
   const router = useRouter();
 
   return (
@@ -78,8 +79,8 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
               my: 2,
             }}
           >
-            {tags.map((tag, key) => (
-              <MenuItem key={key}>{tag}</MenuItem>
+            {tags?.map((tag, key) => (
+              <MenuItem key={key}>{tag.name}</MenuItem>
             ))}
           </Select>
 
@@ -95,8 +96,8 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
                   my: 2,
                 }}
               >
-                {status.map((name, key) => (
-                  <MenuItem key={key}>{name}</MenuItem>
+                {statuses?.map((status, key) => (
+                  <MenuItem key={key}>{status.name}</MenuItem>
                 ))}
               </Select>
             </>

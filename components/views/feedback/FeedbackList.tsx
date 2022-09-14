@@ -1,41 +1,15 @@
 import { Box } from "@mui/material";
 import SuggestionCard from "./suggestions/SuggestionCard";
-import { gql, useQuery } from "@apollo/client";
-
-const FeedbackListQuery = gql`
-  query {
-    suggestions {
-      id
-      comments
-      description
-      status
-      tags
-      title
-      upvotes
-    }
-  }
-`;
-
-interface Suggestion {
-  id: number;
-  title: string;
-  description: string;
-  status: string;
-  tags: [string];
-  upvotes: number;
-  comments: number;
-}
+import { useGetSuggestions } from "lib/supabase/feedbackList";
 
 const FeedbackList = () => {
-  const { data, error, loading } = useQuery(FeedbackListQuery);
+  const { data, isLoading } = useGetSuggestions();
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Whoops! Something went wrong: {error.message}</p>;
-
+  if (isLoading) return <p>Loading...</p>;
   return (
     <Box>
-      {data?.suggestions.map((suggestion: Suggestion, key: number) => {
-        if (!suggestion.status) {
+      {data?.map((suggestion: any, key: number) => {
+        if (suggestion.statusID === null) {
           return <SuggestionCard key={key} suggestion={suggestion} />;
         } else return "";
       })}
