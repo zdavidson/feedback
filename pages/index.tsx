@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import FeedbackBoard from "@/components/views/feedback/FeedbackBoard";
+import FeedbackBoard from "@/components/feedback-board";
 import styles from "@/styles/Home.module.css";
 
 const Home: NextPage = () => {

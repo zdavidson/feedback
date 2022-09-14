@@ -1,7 +1,7 @@
-import Header from "@/components/shared/header/Header";
-import RoadmapHeader from "@/components/views/roadmap/RoadmapHeader";
-import RoadmapList from "@/components/views/roadmap/RoadmapList";
-import { Box, Grid } from "@mui/material";
+import Header from "@/components/header";
+import RoadmapHeader from "@/components/roadmap-header";
+import RoadmapList from "@/components/roadmap-list";
+import { Grid } from "@mui/material";
 
 const Roadmap = () => {
   return (

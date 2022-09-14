@@ -1,4 +1,4 @@
-import UpsertFeedbackContainer from "@/components/views/feedback/UpsertFeedbackContainer";
+import UpsertFeedbackContainer from "@/components/upsert-feedback-container";
 import { useRouter } from "next/router";
 
 import { useGetSuggestion } from "lib/supabase/feedbackList";
