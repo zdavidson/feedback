@@ -1,5 +1,6 @@
 import { COLORS } from "@/styles/theme/themeOptions";
 import StyledBox from "@/components/box";
+import { atom, useAtom, useSetAtom } from "jotai";
 
 import { useGetTags } from "lib/supabase/feedbackList";
 
@@ -7,11 +8,13 @@ import ButtonBox from "@/components/button-box";
 import { Typography } from "@mui/material";
 import { Tag } from "../../types/index";
 
+export let globalTag = atom("All");
+
 const SidebarTags = () => {
   const { data: tags, isLoading } = useGetTags();
+  const [selectedTag, setSelectedTag] = useAtom(globalTag);
 
   if (isLoading) return <p>Loading...</p>;
-
   return (
     <StyledBox
       sx={{
@@ -24,7 +27,11 @@ const SidebarTags = () => {
     >
       {tags?.map((tag: Tag) => (
         <ButtonBox
-          className={tag.name === "All" ? "clicked" : ""}
+          className={tag.name === selectedTag ? "clicked" : ""}
+          onClick={() => {
+            setSelectedTag(tag.name);
+            globalTag = atom(tag.id as unknown as string);
+          }}
           key={tag.id}
           sx={{
             backgroundColor: COLORS.secondary.grey.s60,
@@ -45,3 +52,6 @@ const SidebarTags = () => {
 };
 
 export default SidebarTags;
+function useUpdateAtom(selectedTag: string) {
+  throw new Error("Function not implemented.");
+}
