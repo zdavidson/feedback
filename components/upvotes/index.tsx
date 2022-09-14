@@ -1,5 +1,5 @@
 import { COLORS } from "@/styles/theme/themeOptions";
-import { Typography } from "@mui/material";
+import { SxProps, Theme, Typography } from "@mui/material";
 import { useState } from "react";
 import ButtonBox from "@/components/button-box";
 import { supabase } from "utils/supabaseClient";
@@ -7,7 +7,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 interface Props {
   suggestionID: number;
-  sx?: any;
+  sx?: SxProps<Theme> | undefined;
   upvotes: number;
 }
 

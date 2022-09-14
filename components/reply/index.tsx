@@ -1,11 +1,8 @@
 import { Box } from "@mui/material";
 import ResponseContainer from "@/components/response-container";
+import { Reply } from "../../types/index";
 
-interface Props {
-  reply: any;
-}
-
-const Reply = ({ reply }: Props) => {
+const Reply = ({ reply }: Reply) => {
   return (
     <Box
       sx={{

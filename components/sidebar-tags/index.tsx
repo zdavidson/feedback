@@ -5,6 +5,7 @@ import { useGetTags } from "lib/supabase/feedbackList";
 
 import ButtonBox from "@/components/button-box";
 import { Typography } from "@mui/material";
+import { Tag } from "../../types/index";
 
 const SidebarTags = () => {
   const { data: tags, isLoading } = useGetTags();
@@ -21,7 +22,7 @@ const SidebarTags = () => {
         my: 3,
       }}
     >
-      {tags?.map((tag: any) => (
+      {tags?.map((tag: Tag) => (
         <ButtonBox
           className={tag.name === "All" ? "clicked" : ""}
           key={tag.id}
