@@ -25,8 +25,6 @@ const RoadmapCard = ({ suggestion }: Props) => {
     }
   }, [color]);
 
-  console.log(suggestion);
-
   return (
     <StyledBox
       sx={{
