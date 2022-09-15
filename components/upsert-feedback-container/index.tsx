@@ -8,13 +8,12 @@ import {
   FormControl,
   SelectChangeEvent,
   FormGroup,
-  Snackbar,
 } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import StyledBox from "@/components/box";
-import StyledButton from "@/components/button";
-import StyledTextField from "@/components/text-field";
+import Button from "@/components/button";
+import TextField from "@/components/text-field";
 import { COLORS } from "@/styles/theme/themeOptions";
 import AddIcon from "@mui/icons-material/Add";
 import BrushIcon from "@mui/icons-material/Brush";
@@ -22,7 +21,7 @@ import DecorativeCircle from "@/components/decorative-circle";
 import { useGetStatuses, useGetTags } from "lib/supabase/feedbackList";
 import { supabase } from "utils/supabaseClient";
 import React, { FormEvent } from "react";
-import { useQueryClient } from "@tanstack/react-query";
+import DeleteButton from "../delete-button";
 
 interface Props {
   role: string;
@@ -34,8 +33,6 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
   const { data: statuses } = useGetStatuses();
   const [selectedTag, setSelectedTag] = React.useState("");
   const [selectedStatus, setSelectedStatus] = React.useState("");
-  const [open, setOpen] = React.useState(false);
-  const queryClient = useQueryClient();
 
   const router = useRouter();
   const { id } = router.query;
@@ -62,25 +59,7 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
     }
 
     if (data) {
-      () => router.push("/");
-    }
-  };
-
-  const handleDelete = async (id: string | string[] | undefined | number) => {
-    const { data, error } = await supabase
-      .from("suggestions")
-      .delete()
-      .eq("id", id)
-      .select();
-
-    if (error) {
-      console.log("Error: ", error);
-    }
-
-    if (data) {
-      setOpen(true);
-      queryClient.refetchQueries({ queryKey: ["suggestions-list"] });
-      () => router.push("/");
+      console.log("Added successfully");
     }
   };
 
@@ -98,7 +77,7 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
     }
 
     if (data) {
-      () => router.push("/");
+      console.log("Edited successfully");
     }
   };
 
@@ -142,7 +121,7 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
             <Typography variant="body2">
               Add a short, descriptive headline
             </Typography>
-            <StyledTextField id="feedback-title" name="title" />
+            <TextField id="feedback-title" name="title" />
             <FormGroup>
               <Typography variant="h4">Category</Typography>
               <Typography variant="body2">
@@ -201,7 +180,7 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
               Include any specific comments on what should be improved, added,
               etc.{" "}
             </Typography>
-            <StyledTextField id="feedback-detail" height={100} name="detail" />
+            <TextField id="feedback-detail" height={100} name="detail" />
 
             <Box
               sx={{
@@ -211,36 +190,21 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
                 mt: 2,
               }}
             >
-              {role === "edit" ? (
-                <StyledButton
-                  backgroundColor="red"
-                  onClick={() => handleDelete(id)}
-                  sx={{ height: "fit-content", m: 0 }}
-                >
-                  Delete
-                </StyledButton>
-              ) : null}
+              {role === "edit" ? <DeleteButton id={id} /> : null}
               <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-                <StyledButton
+                <Button
                   backgroundColor={COLORS.primary.navy}
                   onClick={() => router.push("/")}
                 >
                   Cancel
-                </StyledButton>
-                <StyledButton type="submit" sx={{ ml: 2 }}>
+                </Button>
+                <Button type="submit" sx={{ ml: 2 }}>
                   {role === "edit" ? "Update" : "Add Feedback"}
-                </StyledButton>
+                </Button>
               </Box>
             </Box>
           </StyledBox>
         </FormControl>
-        <Snackbar
-          anchorOrigin={{ vertical: "top", horizontal: "left" }}
-          open={open}
-          autoHideDuration={4000}
-          onClose={() => setOpen(false)}
-          message="Delete successful"
-        />
       </Grid>
     </Grid>
   );
