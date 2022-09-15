@@ -14,7 +14,9 @@ const Roadmap = () => {
       spacing={2}
     >
       <Grid item md={9}>
-        <Header children={<RoadmapHeader />} />
+        <Header>
+          <RoadmapHeader />
+        </Header>
         <RoadmapList />
       </Grid>
     </Grid>

@@ -50,7 +50,7 @@ const SuggestionsSort = () => {
         suggestionCount++;
       }
     });
-  }, [data]);
+  }, [data, suggestionCount]);
 
   if (isLoading) return <p>Loading...</p>;
 

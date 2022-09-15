@@ -3,7 +3,7 @@ import { supabase } from "utils/supabaseClient";
 
 // Suggestions List
 async function getSuggestions() {
-  let { error, data } = await supabase
+  const { error, data } = await supabase
     .from("suggestions")
     .select(`*, comments (content), tags (name), statuses (name)`)
     .order("id");
@@ -20,7 +20,7 @@ export const useGetSuggestions = () => {
 
 // Single Suggestion
 async function getSuggestion(id: string | string[] | undefined) {
-  let { error, data } = await supabase
+  const { error, data } = await supabase
     .from("suggestions")
     .select(
       `*, comments (content, id, users(name, userName), replies(content, id, users(name, userName))), tags (name), statuses (name)`
@@ -39,7 +39,7 @@ export const useGetSuggestion = (id: string | string[] | undefined) => {
 
 // Get All Tags
 async function getTags() {
-  let { error, data } = await supabase.from("tags").select(`*`).order("id");
+  const { error, data } = await supabase.from("tags").select(`*`).order("id");
 
   if (error) {
     throw new Error();
@@ -53,7 +53,10 @@ export const useGetTags = () => {
 
 // Get All Statuses
 async function getStatuses() {
-  let { error, data } = await supabase.from("statuses").select(`*`).order("id");
+  const { error, data } = await supabase
+    .from("statuses")
+    .select(`*`)
+    .order("id");
 
   if (error) {
     throw new Error();

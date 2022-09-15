@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 import { Box } from "@mui/material";
 import SuggestionCard from "../suggestion-card";
 import { useGetSuggestions } from "lib/supabase/feedbackList";

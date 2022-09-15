@@ -23,7 +23,7 @@ const RoadmapCard = ({ suggestion }: Props) => {
     } else {
       setColor(COLORS.tertiary.lightBlue);
     }
-  }, [color]);
+  }, [suggestion.statuses.name]);
 
   return (
     <StyledBox

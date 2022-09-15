@@ -1,6 +1,6 @@
 import { COLORS } from "@/styles/theme/themeOptions";
 import StyledBox from "@/components/box";
-import { atom, useAtom, useSetAtom } from "jotai";
+import { atom, useAtom } from "jotai";
 
 import { useGetTags } from "lib/supabase/feedbackList";
 
@@ -52,6 +52,3 @@ const SidebarTags = () => {
 };
 
 export default SidebarTags;
-function useUpdateAtom(selectedTag: string) {
-  throw new Error("Function not implemented.");
-}
