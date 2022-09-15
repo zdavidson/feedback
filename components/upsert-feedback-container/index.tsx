@@ -8,6 +8,7 @@ import {
   FormControl,
   SelectChangeEvent,
   FormGroup,
+  Snackbar,
 } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -21,6 +22,7 @@ import DecorativeCircle from "@/components/decorative-circle";
 import { useGetStatuses, useGetTags } from "lib/supabase/feedbackList";
 import { supabase } from "utils/supabaseClient";
 import React, { FormEvent } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 
 interface Props {
   role: string;
@@ -32,6 +34,8 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
   const { data: statuses } = useGetStatuses();
   const [selectedTag, setSelectedTag] = React.useState("");
   const [selectedStatus, setSelectedStatus] = React.useState("");
+  const [open, setOpen] = React.useState(false);
+  const queryClient = useQueryClient();
 
   const router = useRouter();
   const { id } = router.query;
@@ -58,6 +62,24 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
     }
 
     if (data) {
+      () => router.push("/");
+    }
+  };
+
+  const handleDelete = async (id: string | string[] | undefined | number) => {
+    const { data, error } = await supabase
+      .from("suggestions")
+      .delete()
+      .eq("id", id)
+      .select();
+
+    if (error) {
+      console.log("Error: ", error);
+    }
+
+    if (data) {
+      setOpen(true);
+      queryClient.refetchQueries({ queryKey: ["suggestions-list"] });
       () => router.push("/");
     }
   };
@@ -192,7 +214,7 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
               {role === "edit" ? (
                 <StyledButton
                   backgroundColor="red"
-                  onClick={() => router.push("/")}
+                  onClick={() => handleDelete(id)}
                   sx={{ height: "fit-content", m: 0 }}
                 >
                   Delete
@@ -206,12 +228,19 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
                   Cancel
                 </StyledButton>
                 <StyledButton type="submit" sx={{ ml: 2 }}>
-                  Add Feedback
+                  {role === "edit" ? "Update" : "Add Feedback"}
                 </StyledButton>
               </Box>
             </Box>
           </StyledBox>
         </FormControl>
+        <Snackbar
+          anchorOrigin={{ vertical: "top", horizontal: "left" }}
+          open={open}
+          autoHideDuration={4000}
+          onClose={() => setOpen(false)}
+          message="Delete successful"
+        />
       </Grid>
     </Grid>
   );
