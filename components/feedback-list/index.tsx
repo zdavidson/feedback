@@ -38,7 +38,7 @@ const FeedbackList = () => {
         })}
       </Box>
     );
-  }
+  } else return <div></div>;
 };
 
 export default FeedbackList;
