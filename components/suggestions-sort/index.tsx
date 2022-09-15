@@ -40,7 +40,7 @@ const SuggestionsSort = () => {
 
   let suggestionCount = 0;
 
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChange = (event: SelectChangeEvent<string>) => {
     setSort(event.target.value as string);
   };
 
@@ -79,14 +79,14 @@ const SuggestionsSort = () => {
             id="sort-by-select"
             value={sort}
             label="Sort By"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
             sx={{ color: COLORS.background }}
             MenuProps={MenuProps}
           >
-            <MenuItem value={"Most Upvotes"}>Most Upvotes</MenuItem>
-            <MenuItem value={"Least Upvotes"}>Least Upvotes</MenuItem>
-            <MenuItem value={"Most Comments"}>Most Comments</MenuItem>
-            <MenuItem value={"Leas Comments"}>Least Comments</MenuItem>
+            <MenuItem value="Most Upvotes">Most Upvotes</MenuItem>
+            <MenuItem value="Least Upvotes">Least Upvotes</MenuItem>
+            <MenuItem value="Most Comments">Most Comments</MenuItem>
+            <MenuItem value="Leas Comments">Least Comments</MenuItem>
           </Select>
         </FormControl>
       </Box>
