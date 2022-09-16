@@ -2,6 +2,7 @@ import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 import CircleIcon from "@mui/icons-material/Circle";
 import { Box, Typography } from "@mui/material";
 import { useMemo, useState } from "react";
+import { Suggestion } from "types";
 
 import StyledBox from "@/components/box";
 import Link from "@/components/link";
@@ -10,21 +11,21 @@ import Upvotes from "@/components/upvotes";
 import { COLORS } from "@/styles/theme/themeOptions";
 
 interface Props {
-  suggestion: any;
+  suggestion: Suggestion;
 }
 
 const RoadmapCard = ({ suggestion }: Props) => {
   const [color, setColor] = useState("");
 
   useMemo(() => {
-    if (suggestion.statuses.name === "Planned") {
+    if (suggestion?.statuses?.name === "Planned") {
       setColor(COLORS.tertiary.tangerine);
-    } else if (suggestion.statuses.name === "In-Progress") {
+    } else if (suggestion?.statuses?.name === "In-Progress") {
       setColor(COLORS.primary.magenta);
     } else {
       setColor(COLORS.tertiary.lightBlue);
     }
-  }, [suggestion.statuses.name]);
+  }, [suggestion?.statuses?.name]);
 
   return (
     <StyledBox
@@ -46,7 +47,7 @@ const RoadmapCard = ({ suggestion }: Props) => {
             mr: 2,
           }}
         />
-        {suggestion.statuses.name}
+        {suggestion?.statuses?.name}
       </Typography>
       <Link href={`/suggestions/${suggestion.id}`}>
         <Typography variant="h3">{suggestion.title}</Typography>

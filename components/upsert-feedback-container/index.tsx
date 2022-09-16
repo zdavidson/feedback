@@ -14,7 +14,7 @@ import {
 import { useGetStatuses, useGetTags } from "lib/supabase/feedbackList";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { FormEvent } from "react";
+import React, { BaseSyntheticEvent, FormEvent } from "react";
 import { supabase } from "utils/supabaseClient";
 
 import StyledBox from "@/components/box";
@@ -47,16 +47,15 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
     setSelectedStatus(event.target.value);
   };
 
-  const handleSubmit = async (e: any) => {
-    const { data, error } = await supabase
-      .from("suggestions")
-      .insert([
-        {
-          description: e.target.detail.value,
-          tagID: selectedTag,
-          title: e.target.title.value,
-        },
-      ]);
+  const handleSubmit = async (e: BaseSyntheticEvent) => {
+    console.log(e);
+    const { data, error } = await supabase.from("suggestions").insert([
+      {
+        description: e.target.detail.value,
+        tagID: selectedTag,
+        title: e.target.title.value,
+      },
+    ]);
 
     if (error) {
       console.log("Error: ", error);
@@ -67,7 +66,7 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
     }
   };
 
-  const handleEdit = async (e: any) => {
+  const handleEdit = async (e: BaseSyntheticEvent) => {
     const { data, error } = await supabase.from("suggestions").upsert({
       description: e.target.detail.value,
       id: id,

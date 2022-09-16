@@ -5,6 +5,7 @@ import { COLORS } from "@/styles/theme/themeOptions";
 
 interface BoxProps {
   children: ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component?: ElementType<any>;
   onSubmit?: (e: FormEvent<HTMLDivElement>) => void;
   sx?: SxProps<Theme> | undefined;

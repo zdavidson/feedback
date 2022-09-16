@@ -2,6 +2,7 @@
 import { Box } from "@mui/material";
 import { useAtom } from "jotai";
 import { useGetSuggestions } from "lib/supabase/feedbackList";
+import { Suggestion } from "types";
 
 import { globalTag } from "../sidebar-tags";
 import SuggestionCard from "../suggestion-card";
@@ -17,7 +18,7 @@ const FeedbackList = () => {
   if (currentTag == "All" || currentTag == "1")
     return (
       <Box>
-        {data?.map((suggestion: any) => {
+        {data?.map((suggestion: Suggestion) => {
           if (suggestion.statusID === null) {
             return (
               <SuggestionCard key={suggestion.id} suggestion={suggestion} />
@@ -31,7 +32,7 @@ const FeedbackList = () => {
   if (currentTag !== "All" || "1") {
     return (
       <Box>
-        {data?.map((suggestion: any) => {
+        {data?.map((suggestion: Suggestion) => {
           if (suggestion.statusID === null && suggestion.tagID == currentTag) {
             return (
               <SuggestionCard key={suggestion.id} suggestion={suggestion} />
