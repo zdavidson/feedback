@@ -1,8 +1,10 @@
 import { Box } from "@mui/material";
 import Divider from "@mui/material/Divider";
+
 import Reply from "@/components/reply";
 import ResponseContainer from "@/components/response-container";
-import { CommentType } from "../../types/index";
+
+import { CommentType } from "../../types";
 
 const Comment = ({ comment }: CommentType) => {
   return (

@@ -1,9 +1,9 @@
-import { COLORS } from "@/styles/theme/themeOptions";
-import StyledBox from "@/components/box";
-
-import Button from "@/components/button";
 import { useRouter } from "next/router";
 import { ReactNode } from "react";
+
+import StyledBox from "@/components/box";
+import Button from "@/components/button";
+import { COLORS } from "@/styles/theme/themeOptions";
 
 interface Props {
   children: ReactNode;

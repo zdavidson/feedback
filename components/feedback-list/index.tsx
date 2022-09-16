@@ -1,9 +1,10 @@
 /* eslint-disable no-constant-condition */
 import { Box } from "@mui/material";
-import SuggestionCard from "../suggestion-card";
-import { useGetSuggestions } from "lib/supabase/feedbackList";
 import { useAtom } from "jotai";
+import { useGetSuggestions } from "lib/supabase/feedbackList";
+
 import { globalTag } from "../sidebar-tags";
+import SuggestionCard from "../suggestion-card";
 
 const FeedbackList = () => {
   const { data, isLoading } = useGetSuggestions();

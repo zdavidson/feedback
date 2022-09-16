@@ -1,7 +1,8 @@
+import { Grid } from "@mui/material";
+
 import Header from "@/components/header";
 import RoadmapHeader from "@/components/roadmap-header";
 import RoadmapList from "@/components/roadmap-list";
-import { Grid } from "@mui/material";
 
 const Roadmap = () => {
   return (

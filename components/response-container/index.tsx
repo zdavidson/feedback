@@ -1,5 +1,5 @@
-import { Avatar, Box, Button, Typography } from "@mui/material";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Avatar, Box, Button, Typography } from "@mui/material";
 
 interface Props {
   response: any;

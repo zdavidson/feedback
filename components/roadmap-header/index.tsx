@@ -1,6 +1,7 @@
-import { COLORS } from "@/styles/theme/themeOptions";
 import { Box, Typography } from "@mui/material";
 import Link from "next/link";
+
+import { COLORS } from "@/styles/theme/themeOptions";
 
 const RoadmapHeader = () => {
   return (

@@ -1,12 +1,13 @@
-import { Box, Typography } from "@mui/material";
-import StyledBox from "@/components/box";
-import CircleIcon from "@mui/icons-material/Circle";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
-import { COLORS } from "@/styles/theme/themeOptions";
+import CircleIcon from "@mui/icons-material/Circle";
+import { Box, Typography } from "@mui/material";
+import { useMemo, useState } from "react";
+
+import StyledBox from "@/components/box";
+import Link from "@/components/link";
 import Tags from "@/components/tags";
 import Upvotes from "@/components/upvotes";
-import { useMemo, useState } from "react";
-import Link from "@/components/link";
+import { COLORS } from "@/styles/theme/themeOptions";
 
 interface Props {
   suggestion: any;

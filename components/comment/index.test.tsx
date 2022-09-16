@@ -1,5 +1,6 @@
-import Comment from ".";
 import { render, screen, waitFor } from "@testing-library/react";
+
+import Comment from ".";
 
 describe("Comment", () => {
   it("renders a comment", () => {

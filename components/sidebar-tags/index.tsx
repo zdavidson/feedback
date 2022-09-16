@@ -1,12 +1,12 @@
-import { COLORS } from "@/styles/theme/themeOptions";
-import StyledBox from "@/components/box";
+import { Typography } from "@mui/material";
 import { atom, useAtom } from "jotai";
-
 import { useGetTags } from "lib/supabase/feedbackList";
 
+import StyledBox from "@/components/box";
 import ButtonBox from "@/components/button-box";
-import { Typography } from "@mui/material";
-import { Tag } from "../../types/index";
+import { COLORS } from "@/styles/theme/themeOptions";
+
+import { Tag } from "../../types";
 
 export let globalTag = atom("All");
 
@@ -21,8 +21,8 @@ const SidebarTags = () => {
         backgroundColor: COLORS.primary.white,
         display: "flex",
         flexWrap: "wrap",
-        p: 2,
         my: 3,
+        p: 2,
       }}
     >
       {tags?.map((tag: Tag) => (

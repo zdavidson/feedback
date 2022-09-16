@@ -1,4 +1,5 @@
-import { Grid, Box } from "@mui/material";
+import { Box, Grid } from "@mui/material";
+
 import Button from "@/components/button";
 import { COLORS } from "@/styles/theme/themeOptions";
 

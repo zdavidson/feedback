@@ -1,7 +1,9 @@
-import Box from "@/components/box";
 import { Typography } from "@mui/material";
+
+import Box from "@/components/box";
+
+import { Comments } from "../../types";
 import Comment from "../comment";
-import { Comments } from "../../types/index";
 
 const Comments = ({ comments }: Comments) => {
   if (comments.length)

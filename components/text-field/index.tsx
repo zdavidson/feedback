@@ -1,5 +1,6 @@
 import { TextField as MuiTextField } from "@mui/material";
-import { useState, ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
+
 import { COLORS } from "@/styles/theme/themeOptions";
 
 interface TextFieldProps {

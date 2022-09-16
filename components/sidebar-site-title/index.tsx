@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
-import { COLORS } from "@/styles/theme/themeOptions";
+
 import StyledBox from "@/components/box";
+import { COLORS } from "@/styles/theme/themeOptions";
 
 interface Props {
   user?: string;

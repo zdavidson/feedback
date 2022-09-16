@@ -1,25 +1,25 @@
-import { COLORS } from "@/styles/theme/themeOptions";
 import styled from "@emotion/styled";
 import { Box, SxProps, Theme } from "@mui/material";
-import { useState } from "react";
-import { ReactNode } from "react";
+import { ReactNode, useState } from "react";
+
+import { COLORS } from "@/styles/theme/themeOptions";
 
 const StyledBox = styled(Box)({
   alignItems: "center",
   backgroundColor: COLORS.background,
   borderRadius: 6,
   display: "flex",
-  py: 1,
   px: 1.25,
-
-  "&:hover": {
-    backgroundColor: "#CFD7FF",
-    cursor: "pointer",
-  },
+  py: 1,
 
   "&.clicked": {
     backgroundColor: COLORS.primary.blue,
     color: COLORS.primary.white,
+  },
+
+  "&:hover": {
+    backgroundColor: "#CFD7FF",
+    cursor: "pointer",
   },
 });
 

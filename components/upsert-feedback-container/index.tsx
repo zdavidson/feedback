@@ -1,26 +1,28 @@
-import {
-  Grid,
-  Box,
-  Typography,
-  MenuItem,
-  Select,
-  FilledInput,
-  FormControl,
-  SelectChangeEvent,
-  FormGroup,
-} from "@mui/material";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import StyledBox from "@/components/box";
-import Button from "@/components/button";
-import TextField from "@/components/text-field";
-import { COLORS } from "@/styles/theme/themeOptions";
 import AddIcon from "@mui/icons-material/Add";
 import BrushIcon from "@mui/icons-material/Brush";
-import DecorativeCircle from "@/components/decorative-circle";
+import {
+  Box,
+  FilledInput,
+  FormControl,
+  FormGroup,
+  Grid,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+  Typography,
+} from "@mui/material";
 import { useGetStatuses, useGetTags } from "lib/supabase/feedbackList";
-import { supabase } from "utils/supabaseClient";
+import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { FormEvent } from "react";
+import { supabase } from "utils/supabaseClient";
+
+import StyledBox from "@/components/box";
+import Button from "@/components/button";
+import DecorativeCircle from "@/components/decorative-circle";
+import TextField from "@/components/text-field";
+import { COLORS } from "@/styles/theme/themeOptions";
+
 import DeleteButton from "../delete-button";
 
 interface Props {
@@ -46,13 +48,15 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
   };
 
   const handleSubmit = async (e: any) => {
-    const { data, error } = await supabase.from("suggestions").insert([
-      {
-        title: e.target.title.value,
-        description: e.target.detail.value,
-        tagID: selectedTag,
-      },
-    ]);
+    const { data, error } = await supabase
+      .from("suggestions")
+      .insert([
+        {
+          description: e.target.detail.value,
+          tagID: selectedTag,
+          title: e.target.title.value,
+        },
+      ]);
 
     if (error) {
       console.log("Error: ", error);
@@ -65,11 +69,11 @@ const UpsertFeedbackContainer = ({ role, title }: Props) => {
 
   const handleEdit = async (e: any) => {
     const { data, error } = await supabase.from("suggestions").upsert({
-      id: id,
-      title: e.target.title.value,
       description: e.target.detail.value,
-      tagID: selectedTag,
+      id: id,
       statusID: selectedStatus,
+      tagID: selectedTag,
+      title: e.target.title.value,
     });
 
     if (error) {

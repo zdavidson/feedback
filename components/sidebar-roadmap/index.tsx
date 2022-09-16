@@ -1,8 +1,9 @@
-import StyledBox from "@/components/box";
-import { COLORS } from "@/styles/theme/themeOptions";
+import CircleIcon from "@mui/icons-material/Circle";
 import { Box, styled, Typography } from "@mui/material";
 import Link from "next/link";
-import CircleIcon from "@mui/icons-material/Circle";
+
+import StyledBox from "@/components/box";
+import { COLORS } from "@/styles/theme/themeOptions";
 
 const ListItem = styled(Box)({
   display: "flex",
