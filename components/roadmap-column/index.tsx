@@ -4,7 +4,7 @@ import { RoadmapData, Suggestion } from "types";
 import RoadmapCard from "../roadmap-card";
 
 interface Props {
-  data: RoadmapData;
+  data: any[] | undefined | RoadmapData;
   description: string;
   sx?: SxProps<Theme> | undefined;
   title: string;
