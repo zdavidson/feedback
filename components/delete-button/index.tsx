@@ -2,6 +2,7 @@ import { Snackbar } from "@mui/material";
 import { useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import { supabase } from "utils/supabaseClient";
+
 import Button from "../button";
 
 const DeleteButton = ({ id }: any) => {
@@ -35,7 +36,7 @@ const DeleteButton = ({ id }: any) => {
         Delete
       </Button>
       <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "left" }}
+        anchorOrigin={{ horizontal: "left", vertical: "top" }}
         open={open}
         autoHideDuration={4000}
         onClose={() => setOpen(false)}

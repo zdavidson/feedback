@@ -1,5 +1,6 @@
-import AddComment from ".";
 import { render, screen } from "@testing-library/react";
+
+import AddComment from ".";
 
 describe("AddComment", () => {
   it("renders", () => {

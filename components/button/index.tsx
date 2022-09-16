@@ -1,6 +1,7 @@
-import { COLORS } from "@/styles/theme/themeOptions";
 import MuiButton from "@mui/material/Button";
 import { ReactNode } from "react";
+
+import { COLORS } from "@/styles/theme/themeOptions";
 
 interface ButtonProps {
   backgroundColor?: string;
@@ -24,10 +25,10 @@ const Button = ({
         borderRadius: 3,
         boxShadow: "none",
         color: COLORS.primary.white,
-        textTransform: "none",
         px: 3,
         py: 1,
         ...sx,
+        textTransform: "none",
       }}
       onClick={onClick}
       type={type}

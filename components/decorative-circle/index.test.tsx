@@ -1,5 +1,6 @@
-import DecorativeCircle from ".";
 import { render, screen, waitFor } from "@testing-library/react";
+
+import DecorativeCircle from ".";
 
 describe("DecorativeCircle", () => {
   it("renders with children and background colors", () => {

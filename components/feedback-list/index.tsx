@@ -1,9 +1,11 @@
 /* eslint-disable no-constant-condition */
 import { Box } from "@mui/material";
-import SuggestionCard from "../suggestion-card";
-import { useGetSuggestions } from "lib/supabase/feedbackList";
 import { useAtom } from "jotai";
+import { useGetSuggestions } from "lib/supabase/feedbackList";
+import { Suggestion } from "types";
+
 import { globalTag } from "../sidebar-tags";
+import SuggestionCard from "../suggestion-card";
 
 const FeedbackList = () => {
   const { data, isLoading } = useGetSuggestions();
@@ -16,7 +18,7 @@ const FeedbackList = () => {
   if (currentTag == "All" || currentTag == "1")
     return (
       <Box>
-        {data?.map((suggestion: any) => {
+        {data?.map((suggestion: Suggestion) => {
           if (suggestion.statusID === null) {
             return (
               <SuggestionCard key={suggestion.id} suggestion={suggestion} />
@@ -30,7 +32,7 @@ const FeedbackList = () => {
   if (currentTag !== "All" || "1") {
     return (
       <Box>
-        {data?.map((suggestion: any) => {
+        {data?.map((suggestion: Suggestion) => {
           if (suggestion.statusID === null && suggestion.tagID == currentTag) {
             return (
               <SuggestionCard key={suggestion.id} suggestion={suggestion} />

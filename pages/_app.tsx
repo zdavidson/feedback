@@ -1,9 +1,17 @@
-import * as React from "react";
-import type { AppProps } from "next/app";
-import { CacheProvider, EmotionCache } from "@emotion/react";
-import { ThemeProvider, CssBaseline, createTheme } from "@mui/material";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import "../styles/globals.css";
 
+import { CacheProvider, EmotionCache } from "@emotion/react";
+import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import type { AppProps } from "next/app";
+import * as React from "react";
+
+import themeOptions from "../styles/theme/themeOptions";
+import createEmotionCache from "../utils/createEmotionCache";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,14 +22,6 @@ const queryClient = new QueryClient({
   },
 });
 
-import "@fontsource/roboto/300.css";
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
-
-import createEmotionCache from "../utils/createEmotionCache";
-import "../styles/globals.css";
-import themeOptions from "../styles/theme/themeOptions";
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }

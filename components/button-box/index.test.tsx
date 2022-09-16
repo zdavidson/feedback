@@ -1,6 +1,7 @@
-import ButtonBox from ".";
 import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
+import ButtonBox from ".";
 
 describe("ButtonBox", () => {
   it("renders button text", () => {

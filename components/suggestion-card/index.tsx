@@ -1,10 +1,11 @@
-import { Box, Typography } from "@mui/material";
-import { COLORS } from "@/styles/theme/themeOptions";
-import StyledBox from "@/components/box";
 import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
+import { Box, Typography } from "@mui/material";
+
+import StyledBox from "@/components/box";
 import Link from "@/components/link";
-import Upvotes from "@/components/upvotes";
 import Tags from "@/components/tags";
+import Upvotes from "@/components/upvotes";
+import { COLORS } from "@/styles/theme/themeOptions";
 
 interface Props {
   suggestion: {

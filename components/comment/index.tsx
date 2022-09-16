@@ -1,15 +1,17 @@
 import { Box } from "@mui/material";
 import Divider from "@mui/material/Divider";
+
 import Reply from "@/components/reply";
 import ResponseContainer from "@/components/response-container";
-import { CommentType } from "../../types/index";
+
+import { CommentType, ReplyType } from "../../types";
 
 const Comment = ({ comment }: CommentType) => {
   return (
     <>
       <ResponseContainer response={comment} />
       {comment.replies?.length ? (
-        comment.replies.map((reply: any) => {
+        comment.replies.map((reply: ReplyType) => {
           return (
             <Box
               key={reply.id}

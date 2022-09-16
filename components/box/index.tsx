@@ -1,9 +1,11 @@
-import { COLORS } from "@/styles/theme/themeOptions";
 import { Box as MuiBox, SxProps, Theme } from "@mui/material";
 import { ElementType, FormEvent, ReactNode } from "react";
 
+import { COLORS } from "@/styles/theme/themeOptions";
+
 interface BoxProps {
   children: ReactNode;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   component?: ElementType<any>;
   onSubmit?: (e: FormEvent<HTMLDivElement>) => void;
   sx?: SxProps<Theme> | undefined;
@@ -15,10 +17,10 @@ const Box = ({ children, component, onSubmit, sx }: BoxProps) => {
       component={component}
       onSubmit={onSubmit}
       sx={{
-        borderRadius: 2,
         backgroundColor: COLORS.primary.white,
-        p: 3,
+        borderRadius: 2,
         m: 2,
+        p: 3,
         ...sx,
       }}
     >

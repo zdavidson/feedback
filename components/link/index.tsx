@@ -1,7 +1,8 @@
-import { COLORS } from "@/styles/theme/themeOptions";
 import { Box, styled } from "@mui/material";
 import NextLink from "next/link";
 import { ReactNode } from "react";
+
+import { COLORS } from "@/styles/theme/themeOptions";
 
 interface Props {
   children: ReactNode;

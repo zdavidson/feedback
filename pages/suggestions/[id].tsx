@@ -1,12 +1,13 @@
-import { COLORS } from "@/styles/theme/themeOptions";
 import { Box, Grid, Typography } from "@mui/material";
-import Link from "next/link";
-import Button from "@/components/button";
-import { useRouter } from "next/router";
-import SuggestionCard from "@/components/suggestion-card";
-import Comments from "@/components/comments";
-import AddComment from "@/components/add-comment";
 import { useGetSuggestion } from "lib/supabase/feedbackList";
+import Link from "next/link";
+import { useRouter } from "next/router";
+
+import AddComment from "@/components/add-comment";
+import Button from "@/components/button";
+import Comments from "@/components/comments";
+import SuggestionCard from "@/components/suggestion-card";
+import { COLORS } from "@/styles/theme/themeOptions";
 
 const SuggestionDetails = () => {
   const router = useRouter();

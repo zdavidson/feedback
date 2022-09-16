@@ -1,7 +1,7 @@
-import UpsertFeedbackContainer from "@/components/upsert-feedback-container";
+import { useGetSuggestion } from "lib/supabase/feedbackList";
 import { useRouter } from "next/router";
 
-import { useGetSuggestion } from "lib/supabase/feedbackList";
+import UpsertFeedbackContainer from "@/components/upsert-feedback-container";
 
 const EditFeedback = () => {
   const router = useRouter();

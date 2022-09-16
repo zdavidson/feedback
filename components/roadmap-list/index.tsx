@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
-import RoadmapColumn from "@/components/roadmap-column";
 import { useGetSuggestions } from "lib/supabase/feedbackList";
+
+import RoadmapColumn from "@/components/roadmap-column";
 
 const RoadmapList = () => {
   const { data, isLoading } = useGetSuggestions();

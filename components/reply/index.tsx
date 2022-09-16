@@ -1,6 +1,8 @@
 import { Box } from "@mui/material";
+
 import ResponseContainer from "@/components/response-container";
-import { Reply } from "../../types/index";
+
+import { Reply } from "../../types";
 
 const Reply = ({ reply }: Reply) => {
   return (
