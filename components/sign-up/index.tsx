@@ -38,7 +38,9 @@ const SignUp = () => {
 
   return (
     <>
-      <Button onClick={() => setOpen(true)}>Sign Up</Button>
+      <Button onClick={() => setOpen(true)} sx={{ mx: 1 }}>
+        Sign Up
+      </Button>
       <Modal open={open} onClose={handleClose}>
         <Box
           sx={{
