@@ -1,7 +1,7 @@
-import UpsertFeedbackContainer from "@/components/upsert-feedback-container";
+import AddFeedbackForm from "@/components/add-feedback-form";
 
 const AddNewSuggestion = () => {
-  return <UpsertFeedbackContainer role="create" title="Create New Feedback" />;
+  return <AddFeedbackForm title="Create New Feedback" />;
 };
 
 export default AddNewSuggestion;

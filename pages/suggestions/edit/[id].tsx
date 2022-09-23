@@ -1,7 +1,7 @@
 import { useGetSuggestion } from "lib/supabase/feedbackList";
 import { useRouter } from "next/router";
 
-import UpsertFeedbackContainer from "@/components/upsert-feedback-container";
+import UpdateFeedbackForm from "@/components/update-feedback-form";
 
 const EditFeedback = () => {
   const router = useRouter();
@@ -11,9 +11,7 @@ const EditFeedback = () => {
 
   if (isLoading) return <p>Loading...</p>;
 
-  return (
-    <UpsertFeedbackContainer role="edit" title={`Edit '${data?.[0].title}'`} />
-  );
+  return <UpdateFeedbackForm title={`Edit '${data?.[0].title}'`} />;
 };
 
 export default EditFeedback;
