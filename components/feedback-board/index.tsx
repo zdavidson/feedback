@@ -3,7 +3,6 @@ import { Box, Grid } from "@mui/material";
 import FeedbackList from "@/components/feedback-list";
 import Header from "@/components/header";
 import SideBar from "@/components/sidebar";
-import SuggestionsSort from "@/components/suggestions-sort";
 
 const FeedbackBoard = () => {
   return (
