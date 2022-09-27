@@ -20,9 +20,7 @@ const FeedbackBoard = () => {
       </Grid>
       <Grid item md={8}>
         <Box>
-          <Header>
-            <SuggestionsSort />
-          </Header>
+          <Header>{/* <SuggestionsSort /> */}</Header>
           <FeedbackList />
         </Box>
       </Grid>

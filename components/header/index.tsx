@@ -35,11 +35,6 @@ const Header = ({ children }: Props) => {
     }
   };
 
-  // const getUser = async () => {
-  //   const { data } = await supabase.auth.getUser();
-  //   console.log(data);
-  // };
-
   return (
     <StyledBox
       sx={{
@@ -50,6 +45,9 @@ const Header = ({ children }: Props) => {
       }}
     >
       {children}
+      <Button onClick={() => router.push("/suggestions/add")}>
+        + Add Feedback
+      </Button>{" "}
       <Box sx={{ display: "flex" }}>
         {user ? (
           <Button onClick={() => handleSignOut()}>Sign Out</Button>
@@ -60,10 +58,6 @@ const Header = ({ children }: Props) => {
           </>
         )}
       </Box>
-      {/* <Button onClick={() => getUser()}>Get User</Button> */}
-      <Button onClick={() => router.push("/suggestions/add")}>
-        + Add Feedback
-      </Button>{" "}
     </StyledBox>
   );
 };
